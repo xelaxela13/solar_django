@@ -3,9 +3,9 @@
 
 {% block bootstrap4_title %}Title{% endblock %}
 {% block bootstrap4_extra_head %}{% endblock %}
-{% block bootstrap4_before_content %}{% endblock %}
+{% block bootstrap4_before_content %}{% include 'header.html' %}{% endblock %}
 {% block bootstrap4_content %}
     Index Content
 {% endblock %}
-{% block bootstrap4_after_content %}{% endblock %}
+{% block bootstrap4_after_content %}{% include 'footer.html' %}{% endblock %}
 
