@@ -1,0 +1,14 @@
+{% extends 'home/index.html' %}
+{% load bootstrap4 %}
+
+{% block bootstrap4_title %}Login{% endblock %}
+{% block bootstrap4_content %}
+    <div class="col-lg-4 offset-lg-4">
+        <form method="post" action="{% url 'login' %}" name="login_form">
+            {% bootstrap_form form %}
+            {% bootstrap_button "Login" button_type="submit" button_class="btn-primary" %}
+            {% csrf_token %}
+        </form>
+        <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+    </div>
+{% endblock %}
