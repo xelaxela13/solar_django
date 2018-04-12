@@ -1,11 +1,13 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from .models import User
 
 
 class SignUpForm(UserCreationForm):
-    phone = forms.CharField(help_text='Phone number')
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'phone', 'password1', 'password2', )
+        fields = ('username', 'email', 'phone', 'location', 'password1', 'password2', )
+        widgets = {
+            'location': forms.HiddenInput(),
+        }

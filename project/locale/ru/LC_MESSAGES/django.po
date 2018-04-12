@@ -1,0 +1,40 @@
+#
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-04-12 16:53+0202\n"
+"Last-Translator: b'  <xelaxela13@gmail.com>'\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Translated-Using: django-rosetta 0.8.1\n"
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "Settings"
+msgstr "Настройки"
+
+msgid "Update"
+msgstr "Обновить"
+
+msgid "Confirm deletion"
+msgstr "Подтвердить удаление"
+
+msgid "Submit"
+msgstr "Отправить"
+
+msgid "All right!"
+msgstr "Все в порядке!"
+
+msgid "You don`t have permissions for viewing this page"
+msgstr "У вас нет прав на просмотр этой страницы"
+
+msgid "Welcome"
+msgstr "Добро пожаловать"
+
+msgid "Lost password?"
+msgstr "Забыли пароль?"
+
+msgid "Sign up"
+msgstr "Зарегистрироваться"
