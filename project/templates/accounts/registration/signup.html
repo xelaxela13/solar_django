@@ -1,13 +1,18 @@
 {% extends 'home/index.html' %}
 {% load bootstrap4 %}
 {% load i18n %}
-{% block bootstrap4_title %}Login{% endblock %}
+{% load static %}
+
 {% block bootstrap4_content %}
     <div class="col-lg-4 offset-lg-4">
         <form method="post" action="{% url 'signup' %}" name="signup_form">
             {% bootstrap_form form %}
-            <input type="submit" class="btn btn-primary" value="{% trans 'Sign up' %}">
+            {% trans 'Sign up' as signup %}
+            {% bootstrap_button signup button_type="submit" button_class="btn-primary" %}
             {% csrf_token %}
         </form>
     </div>
+{% endblock %}
+{% block bootstrap4_extra_script %}
+    <script src="{% static 'phone_validator.js' %}" type="text/javascript"></script>
 {% endblock %}

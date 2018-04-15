@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-04-12 16:53+0202\n"
+"PO-Revision-Date: 2018-04-15 19:17+0202\n"
 "Last-Translator: b'  <xelaxela13@gmail.com>'\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -38,3 +38,32 @@ msgstr "Забыли пароль?"
 
 msgid "Sign up"
 msgstr "Зарегистрироваться"
+
+msgid "Phone number"
+msgstr "Номер телефон"
+
+msgid "My account"
+msgstr "Личный кабинет"
+
+msgid "Updated success!"
+msgstr "Обновленно успешно!"
+
+msgid "Registration was successful, please log in"
+msgstr "Регистрация прошла успешно, войдите под своим именем"
+
+msgid "Required field. Please enter your phone number"
+msgstr "Обязательное поле. Введите свой телефон"
+
+msgid "Control panel"
+msgstr "Панель управления"
+
+msgid "Update user data"
+msgstr "Редактировать  пользователя"
+
+msgid "City"
+msgstr "Город"
+
+msgid "Phone number"
+msgstr "Номер телефона"
+
+

@@ -1,6 +1,10 @@
 jQuery(document).ready(function () {
     // signup form
-    $('#id_phone').mask('+380(99)9999999');
+    const phone_field = $('#id_phone');
+    if (phone_field.length > 0){
+        phone_field.mask('+380(99)9999999');
+    }
+
     const form_group = $('.form-group');
     form_group.each(function () {
         if($(this).children('small').length > 0){
@@ -17,5 +21,13 @@ jQuery(document).ready(function () {
         $(this).prev('small').fadeOut();
     });
 
+    // messages notification
+    const messages = $('.alert');
+    console.log(messages);
+    window.setTimeout(function () {
+        messages.fadeTo(500, 0).slideUp(500, function () {
+            $(this).remove();
+        });
+    }, 4000);
 
 });

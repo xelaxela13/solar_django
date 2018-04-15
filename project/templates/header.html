@@ -1,32 +1,11 @@
-{#<nav class="navbar navbar-dark bg-dark">#}
-{#    <a class="navbar-brand" href="{% url 'home' %}">Never expand</a>#}
-{#    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsTopMenu"#}
-{#            aria-controls="navbarsTopMenu" aria-expanded="false" aria-label="Toggle navigation">#}
-{#        <span class="navbar-toggler-icon"></span>#}
-{#    </button>#}
-{#    <div class="navbar-collapse collapse" id="navbarsTopMenu" style="">#}
-{#        <ul class="navbar-nav mr-auto inline-group">#}
-{#            {% if user.is_authenticated %}#}
-{#                <li class="nav-item inline">#}
-{#                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>#}
-{#                </li>#}
-{#            {% else %}#}
-{#                <li class="nav-item inline">#}
-{#                    <a class="nav-link" href="{% url 'login' %}">Login</a>#}
-{#                </li>#}
-{#                <li class="nav-item inline">#}
-{#                    <a class="nav-link" href="{% url 'signup' %}">Signup</a>#}
-{#                </li>#}
-{#            {% endif %}#}
-{#            <li class="nav-item inline">#}
-{#                {% include 'switch_language.html' %}#}
-{#            </li>#}
-{#        </ul>#}
-{#    </div>#}
-{#</nav>#}
 {% load i18n %}
+
 <ul class="nav justify-content-end">
+    <a class="navbar-brand" href="{% url 'home' %}">Never expand</a>
     {% if user.is_authenticated %}
+        <li class="nav-item inline">
+            <a class="nav-link" href="{% url 'panel' %}">{% trans 'My account' %}</a>
+        </li>
         <li class="nav-item inline">
             <a class="nav-link" href="{% url 'logout' %}">{% trans 'Log out' %}</a>
         </li>

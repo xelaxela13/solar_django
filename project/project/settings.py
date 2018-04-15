@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'bootstrap4',
     'accounts',
     'home',
-    'rosetta'
+    'rosetta',
+    'meta'
 
 ]
 
@@ -59,7 +60,7 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates', 'accounts/templates'],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -111,9 +112,10 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'ru-Ru'
 
 from django.utils.translation import gettext_lazy as _
+
 LANGUAGES = [
-  ('ru', _('Russian')),
-  ('en', _('English')),
+    ('ru', _('Russian')),
+    ('en', _('English')),
 ]
 
 LOCALE_PATHS = [
@@ -135,3 +137,17 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'asset')
 STATICFILES_DIRS = [
     'asset_dev'
 ]
+
+#  https://ipstack.com/
+#  free geo api
+IPSTACK_ACCESS_KEY = '0e3e331a2e84afc272c53c97982cc67c'
+
+#  Meta settings https://django-meta.readthedocs.io/en/latest/settings.html
+META_SITE_PROTOCOL = 'http'
+META_SITE_DOMAIN = 'localhost'
+META_SITE_NAME = 'Site name'
+META_USE_TITLE_TAG = True
+META_USE_GOOGLEPLUS_PROPERTIES = False
+META_USE_OG_PROPERTIES = True
+META_USE_TWITTER_PROPERTIES = False
+META_INCLUDE_KEYWORDS = ['django', 'bootstrap']
