@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin, messages
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
-from meta.views import MetadataMixin
+from project.seometa import MetadataMixin
 
 
 def get_client_ip(request):
@@ -52,14 +52,14 @@ class AccountsSignup(SuccessMessageMixin, CreateView):
         return form
 
 
-class AccountsPanel(MetadataMixin, TemplateView):
+class AccountsPanel(SuccessMessageMixin, MetadataMixin, TemplateView):
     title = _('Control panel')
     description = _('My description')
     template_name = 'accounts/panel/panel.html'
 
     def get(self, request, *args, **kwargs):
         messages.success(request, '{} {}'.format(_('Welcome'), request.user.first_name))
-        return super().get(request, *args, **kwargs)
+        return super(AccountsPanel, self).get(request, *args, **kwargs)
 
 
 class AccountsUpdate(SuccessMessageMixin, MetadataMixin, UpdateView):

@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-04-15 19:17+0202\n"
+"PO-Revision-Date: 2018-04-17 19:21+0202\n"
 "Last-Translator: b'  <xelaxela13@gmail.com>'\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -54,6 +54,9 @@ msgstr "Регистрация прошла успешно, войдите по�
 msgid "Required field. Please enter your phone number"
 msgstr "Обязательное поле. Введите свой телефон"
 
+msgid "Required field. Please enter your email"
+msgstr "Обязательное поле. Введите свой email"
+
 msgid "Control panel"
 msgstr "Панель управления"
 
@@ -65,5 +68,3 @@ msgstr "Город"
 
 msgid "Phone number"
 msgstr "Номер телефона"
-
-
