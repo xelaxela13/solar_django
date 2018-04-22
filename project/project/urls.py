@@ -16,13 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf.urls.i18n import i18n_patterns
 
-urlpatterns = [
+urlpatterns_untranslate = [
     path('admin/', admin.site.urls),
-    path('', include('home.urls')),
-    path('accounts/', include('accounts.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
     path('rosetta/', include('rosetta.urls')),
 ]
+urlpatterns_translate = [
+    path('', include('home.urls')),
+    path('accounts/', include('accounts.urls')),
+]
 
-urlpatterns += staticfiles_urlpatterns()
+urlpatterns = staticfiles_urlpatterns() + i18n_patterns(*urlpatterns_translate) + urlpatterns_untranslate

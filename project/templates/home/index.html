@@ -3,7 +3,7 @@
 {% load static %}
 {% load i18n %}
 
-{% block bootstrap4_title %}Title{% endblock %}
+{% block bootstrap4_title %}Home{% endblock %}
 {% block bootstrap4_extra_head %}{% endblock %}
 {% block bootstrap4_before_content %}{% include 'header.html' %}{% endblock %}
 {% block bootstrap4_content %}
@@ -13,25 +13,34 @@
         </div>
         <div class="title text-center">
             <h1>{% trans 'Sunshine energy is it simple' %}</h1>
-            <h3>{% trans 'Easier than ever' %}</h3>
+            <h2>{% trans 'Easier than ever' %}</h2>
         </div>
         <div class="row">
-            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <h3>{% trans 'Сomplete energy independence today' %}</h3>
+                <div class="description">
+                    {% blocktrans %}
+                        Imagine that you are completely independent of the power supplier, moreover, you do not pay them, but they pay you!
+                    {% endblocktrans %}
+                </div>
+            </div>
             <div class="col-lg-4">
                 <div class="circle_block count first">
-                    <div class="circle mx-auto ">
-
+                    <div class="circle mx-auto d-flex justify-content-center align-items-center">
+                        <img src="{% static 'images/home/index/4.png' %}">
                     </div>
                 </div>
             </div>
             <div class="col-lg-4"></div>
         </div>
         <div class="row">
-            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <h3></h3>
+            </div>
             <div class="col-lg-4">
                 <div class="circle_block count second">
-                    <div class="circle mx-auto ">
-
+                    <div class="circle mx-auto d-flex justify-content-center align-items-center">
+                        <img src="{% static 'images/home/index/2.png' %}">
                     </div>
                 </div>
             </div>

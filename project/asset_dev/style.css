@@ -1,3 +1,6 @@
+.navbar-brand img {
+  width: 100px;
+}
 .logo img {
   width: 200px;
 }
@@ -30,6 +33,10 @@
   border: 2px solid;
   border-radius: 50%;
   background: white;
+}
+.circle img {
+  width: 70%;
+  height: 70%;
 }
 /* switch language */
 .switch_language_label {

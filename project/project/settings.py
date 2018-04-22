@@ -139,7 +139,7 @@ STATICFILES_DIRS = [
     'asset_dev'
 ]
 SITE_LOGO_FIRST = os.path.join(STATIC_URL, 'images/iceberg_logo_2.svg')
-SITE_LOGO_SECOND = ''
+SITE_LOGO_SECOND = os.path.join(STATIC_URL, 'images/iceberg_logo.svg')
 
 #  https://ipstack.com/
 #  free geo api

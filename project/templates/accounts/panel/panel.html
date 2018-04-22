@@ -11,7 +11,8 @@
             <div class="card-body">
                 <h5 class="card-title">{% trans 'Control panel' %}</h5>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="{% url 'user_update' pk=user.pk %}">{% trans 'Update user data' %}</a></li>
+                    <li class="list-group-item"><a
+                            href="{% url 'user_update' pk=user.pk %}">{% trans 'Update user data' %}</a></li>
                 </ul>
             </div>
         </div>

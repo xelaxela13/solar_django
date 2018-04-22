@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-04-22 18:13+0202\n"
+"PO-Revision-Date: 2018-04-22 19:20+0202\n"
 "Last-Translator: b'  <xelaxela13@gmail.com>'\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -74,3 +74,14 @@ msgstr "Солнечная энергия - это просто"
 
 msgid "Easier than ever"
 msgstr "Проще чем когда либо"
+
+#: project/templates/home/index.html:20
+msgid "Complete energy independence today"
+msgstr "Полная энергонезависимость уже сегодня"
+
+msgid ""
+"Imagine that you are completely independent of the power supplier, moreover,"
+" you do not pay them, but they pay you!"
+msgstr ""
+"Представьте, что вы полностью независимы от энергосети, мало того, не вы "
+"платите им, а они вам! "
