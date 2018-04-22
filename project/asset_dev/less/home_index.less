@@ -1,0 +1,36 @@
+.logo img {
+  width: 200px;
+}
+.title{
+  text-transform: uppercase;
+}
+
+.circle_block{
+  margin-top: 40px;
+}
+.circle_block.count::after {
+  position: absolute;
+  font-weight: bold;
+  font-size: 150px;
+  top: 0;
+  z-index: -1;
+  line-height: .9;
+}
+
+.circle_block.first::after {
+  content: '1';
+  left: 18%;
+}
+.circle_block.second::after {
+  content: '2';
+  left: 60%;
+  color: @graycolor;
+}
+
+.circle {
+  width: 150px;
+  height: 150px;
+  border: 2px solid;
+  border-radius: 50%;
+  background: white;
+}

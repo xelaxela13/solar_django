@@ -1,0 +1,6 @@
+Django==2.0.4
+mysqlclient==1.3.12
+django-bootstrap4
+requests
+django-rosetta
+django-meta

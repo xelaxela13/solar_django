@@ -1,12 +1,42 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
+{% load static %}
+{% load i18n %}
 
 {% block bootstrap4_title %}Title{% endblock %}
 {% block bootstrap4_extra_head %}{% endblock %}
 {% block bootstrap4_before_content %}{% include 'header.html' %}{% endblock %}
 {% block bootstrap4_content %}
     <div class="col-lg-12">
-        Index Content
+        <div class="logo text-center">
+            <img src="{{ SITE_LOGO_FIRST }}">
+        </div>
+        <div class="title text-center">
+            <h1>{% trans 'Sunshine energy is it simple' %}</h1>
+            <h3>{% trans 'Easier than ever' %}</h3>
+        </div>
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <div class="circle_block count first">
+                    <div class="circle mx-auto ">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <div class="circle_block count second">
+                    <div class="circle mx-auto ">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
     </div>
 {% endblock %}
 {% block bootstrap4_after_content %}{% include 'footer.html' %}{% endblock %}

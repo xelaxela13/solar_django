@@ -68,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'project.context_processors.settings_to_template',  # my context processor
             ],
         },
     },
@@ -137,6 +138,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'asset')
 STATICFILES_DIRS = [
     'asset_dev'
 ]
+SITE_LOGO_FIRST = os.path.join(STATIC_URL, 'images/iceberg_logo_2.svg')
+SITE_LOGO_SECOND = ''
 
 #  https://ipstack.com/
 #  free geo api
