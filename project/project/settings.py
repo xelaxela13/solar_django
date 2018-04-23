@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-import pdb
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'jg4s!7dn)c5fb6bgk2b5t-+_od-6=^isyj=^xj$4z%sh+ow+$$'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
 
 # Application definition
 
@@ -110,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'ru-Ru'
+LANGUAGE_CODE = 'ru'
 
 from django.utils.translation import gettext_lazy as _
 
@@ -130,6 +130,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+SHOW_LANG_SWITCH = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
@@ -143,7 +144,7 @@ SITE_LOGO_SECOND = os.path.join(STATIC_URL, 'images/iceberg_logo.svg')
 
 #  https://ipstack.com/
 #  free geo api
-IPSTACK_ACCESS_KEY = '0e3e331a2e84afc272c53c97982cc67c'
+IPSTACK_ACCESS_KEY = config('IPSTACK_ACCESS_KEY')
 
 #  Meta settings https://django-meta.readthedocs.io/en/latest/settings.html
 META_SITE_PROTOCOL = 'http'

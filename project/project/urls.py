@@ -17,6 +17,16 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.i18n import i18n_patterns
+from django.conf import settings
+
+
+def use_i18n(urlpatterns_list):
+    if not settings.USE_I18N:
+        return urlpatterns_list
+    elif not settings.SHOW_LANG_SWITCH:
+        return urlpatterns_list
+    return i18n_patterns(*urlpatterns_list)
+
 
 urlpatterns_untranslate = [
     path('admin/', admin.site.urls),
@@ -28,4 +38,4 @@ urlpatterns_translate = [
     path('accounts/', include('accounts.urls')),
 ]
 
-urlpatterns = staticfiles_urlpatterns() + i18n_patterns(*urlpatterns_translate) + urlpatterns_untranslate
+urlpatterns = staticfiles_urlpatterns() + urlpatterns_untranslate + use_i18n(urlpatterns_translate)

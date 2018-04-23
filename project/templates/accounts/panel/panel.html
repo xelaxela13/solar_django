@@ -13,6 +13,11 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><a
                             href="{% url 'user_update' pk=user.pk %}">{% trans 'Update user data' %}</a></li>
+                    {% if request.user.is_staff %}
+                        <li class="list-group-item">
+                            <a href="{% url 'users_list' %}">{% trans 'A list of users' %}</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
