@@ -4,13 +4,27 @@
 {% load static %}
 
 {% block bootstrap4_content %}
-    <div class="col-lg-4 offset-lg-4">
-        <form method="post" action="{% url 'signup' %}" name="signup_form">
-            {% bootstrap_form form %}
-            {% trans 'Sign up' as signup %}
-            {% bootstrap_button signup button_type="submit" button_class="btn-primary" %}
-            {% csrf_token %}
-        </form>
+    <div class="col-lg-4">
+        <div>
+            <h3>{% trans 'You ask us - why do I register on the site?' %}</h3>
+            {% blocktrans trimmed %}
+                After registration, you will be available prices and calculations for the payback of the solar station.
+                Registration takes only a few seconds and does not require additional action or confirmation of the
+                email.
+            {% endblocktrans %}
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <form method="post" action="{% url 'signup' %}" name="signup_form">
+                    {% bootstrap_form form %}
+                    {% trans 'Sign up' as signup %}
+                    {% bootstrap_button signup button_type="submit" button_class="btn-primary" %}
+                    {% csrf_token %}
+                </form>
+            </div>
+        </div>
     </div>
 {% endblock %}
 {% block bootstrap4_extra_script %}

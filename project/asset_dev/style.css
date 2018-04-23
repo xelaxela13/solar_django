@@ -2,7 +2,7 @@
   width: 100px;
 }
 .logo img {
-  width: 200px;
+  width: 300px;
 }
 .title {
   text-transform: uppercase;
@@ -25,7 +25,20 @@
 .circle_block.second::after {
   content: '2';
   left: 60%;
-  color: #c9d0ea;
+  color: #98aba2;
+}
+.circle_block.third::after {
+  content: '3';
+  left: 18%;
+  color: #e00300;
+}
+.circle_block.fourth::after {
+  content: '4';
+  left: 60%;
+}
+.circle_block.fifth::after {
+  content: '5';
+  left: 18%;
 }
 .circle {
   width: 150px;
@@ -38,12 +51,24 @@
   width: 70%;
   height: 70%;
 }
+.circle:hover {
+  border-width: 15px;
+  border-color: #d0d9d5;
+  transition: all 0.2s ease-in;
+}
+.circle:hover img {
+  transform: scale(0.8);
+  transition: all 0.2s ease-in;
+}
+.circle:not(:hover) {
+  transition: all 0.3s ease-out;
+}
 /* switch language */
 .switch_language_label {
   text-transform: uppercase;
   background: #c9d0ea;
   border-radius: 50%;
-  color: #fff;
+  color: #000;
   padding: 2px 5px 5px 5px;
   margin: 5px 0 0 0;
   width: 25px;
@@ -55,9 +80,12 @@
 }
 .switch_language_label:hover {
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  transition: all 0.3s ease-out;
   font-size: 10px;
   transform: scale(1.2);
+}
+.switch_language_label:not(:hover) {
+  transition: all 0.2s ease-in;
 }
 /* messages notification */
 div.alert {
@@ -89,7 +117,7 @@ div.alert {
   right: 0;
   line-height: 17px;
   padding: 0 0 0 6px;
-  color: white;
+  color: black;
   background: #c9d0ea;
 }
 .form-group span.help-tooltip:hover {
@@ -97,27 +125,7 @@ div.alert {
 }
 body {
   font-weight: 300;
-  color: #999;
-}
-body::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-repeat: repeat-y;
-  z-index: -1;
-}
-body::before {
-  background-image: url("/static/images/vertical_line.svg");
-  animation: draw-line 2s linear alternate;
-}
-@keyframes draw-line {
-  from {
-    height: 0;
-  }
-  to {
-    height: 100%;
-  }
+  color: #333;
 }
 a {
   color: #98aba2;
@@ -135,5 +143,34 @@ h6 {
 }
 .show {
   display: block !important;
+}
+.vertical_line::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-repeat: repeat-y;
+  z-index: -1;
+}
+.vertical_line::before {
+  background-image: url("/static/images/vertical_line.svg");
+  animation: draw-line 3s linear alternate;
+}
+@keyframes draw-line {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
+}
+footer {
+  min-height: 200px;
+  background: #1f2522;
+  padding: 20px 0;
+}
+footer .logo img {
+  width: 150px;
+  filter: invert(100%);
 }
 /*# sourceMappingURL=style.css.map */

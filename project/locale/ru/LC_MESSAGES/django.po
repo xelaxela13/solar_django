@@ -1,7 +1,9 @@
 #
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-04-22 19:20+0202\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-04-23 15:13+0300\n"
+"PO-Revision-Date: 2018-04-23 15:14+0202\n"
 "Last-Translator: b'  <xelaxela13@gmail.com>'\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -9,79 +11,211 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Translated-Using: django-rosetta 0.8.1\n"
 
-msgid "Cancel"
-msgstr "Отмена"
-
-msgid "Settings"
-msgstr "Настройки"
-
-msgid "Update"
-msgstr "Обновить"
-
-msgid "Confirm deletion"
-msgstr "Подтвердить удаление"
-
-msgid "Submit"
-msgstr "Отправить"
-
-msgid "All right!"
-msgstr "Все в порядке!"
-
-msgid "You don`t have permissions for viewing this page"
-msgstr "У вас нет прав на просмотр этой страницы"
-
-msgid "Welcome"
-msgstr "Добро пожаловать"
-
-msgid "Lost password?"
-msgstr "Забыли пароль?"
-
-msgid "Sign up"
-msgstr "Зарегистрироваться"
-
-msgid "Phone number"
-msgstr "Номер телефон"
-
-msgid "My account"
-msgstr "Личный кабинет"
-
-msgid "Updated success!"
-msgstr "Обновленно успешно!"
-
-msgid "Registration was successful, please log in"
-msgstr "Регистрация прошла успешно, войдите под своим именем"
-
-msgid "Required field. Please enter your phone number"
-msgstr "Обязательное поле. Введите свой телефон"
-
-msgid "Required field. Please enter your email"
-msgstr "Обязательное поле. Введите свой email"
-
-msgid "Control panel"
-msgstr "Панель управления"
-
-msgid "Update user data"
-msgstr "Редактировать  пользователя"
-
+#: accounts/models.py:10
 msgid "City"
 msgstr "Город"
 
+#: accounts/models.py:11
 msgid "Phone number"
 msgstr "Номер телефона"
 
+#: accounts/models.py:12
+msgid "Required field. Please enter your phone number"
+msgstr "Обязательное поле. Введите свой телефон"
+
+#: accounts/models.py:13
+msgid "Required field. Please enter your email"
+msgstr "Обязательное поле. Введите свой email"
+
+#: accounts/models.py:16
+msgid "user"
+msgstr ""
+
+#: accounts/models.py:17
+msgid "users"
+msgstr ""
+
+#: accounts/views.py:40
+msgid "Registration was successful, please log in"
+msgstr "Регистрация прошла успешно, войдите под своим именем"
+
+#: accounts/views.py:56 templates/accounts/panel/panel.html:12
+msgid "Control panel"
+msgstr "Панель управления"
+
+#: accounts/views.py:57
+msgid "My description"
+msgstr ""
+
+#: accounts/views.py:61 templates/accounts/panel/panel.html:10
+msgid "Welcome"
+msgstr "Добро пожаловать"
+
+#: accounts/views.py:66
+#, fuzzy
+#| msgid "My account"
+msgid "Update account"
+msgstr "Обновить личные данные"
+
+#: accounts/views.py:71
+msgid "Updated success!"
+msgstr "Обновленно успешно!"
+
+#: home/views.py:7
+msgid "IceBERG solar systems company"
+msgstr ""
+
+#: project/settings.py:117
+msgid "Russian"
+msgstr "Русский"
+
+#: project/settings.py:118
+msgid "English"
+msgstr "Английский"
+
+#: templates/accounts/panel/panel.html:15
+msgid "Update user data"
+msgstr "Редактировать  пользователя"
+
+#: templates/accounts/panel/update.html:9
+msgid "Update"
+msgstr "Обновить"
+
+#: templates/accounts/registration/login.html:9 templates/header.html:25
+msgid "Log in"
+msgstr "Войти"
+
+#: templates/accounts/registration/login.html:13
+msgid "Lost password?"
+msgstr "Забыли пароль?"
+
+#: templates/accounts/registration/signup.html:9
+msgid "You ask us - why do I register on the site?"
+msgstr "Вы спросите нас - для чего мне регистрироваться на сайте?"
+
+#: templates/accounts/registration/signup.html:10
+msgid ""
+"After registration, you will be available prices and calculations for the "
+"payback of the solar station. Registration takes only a few seconds and does"
+" not require additional action or confirmation of the email."
+msgstr ""
+"После регистрации вам будут доступны цены и расчеты по окупаемости солнечной"
+" станции. Регистрация займет всего несколько секунд и не потребует "
+"дополнительных действий или подтверждения имайла."
+
+#: templates/accounts/registration/signup.html:23 templates/header.html:28
+msgid "Sign up"
+msgstr "Зарегистрироваться"
+
+#: templates/header.html:11
+msgid "Home"
+msgstr "Главная"
+
+#: templates/header.html:18
+msgid "My account"
+msgstr "Личный кабинет"
+
+#: templates/header.html:21
+msgid "Log out"
+msgstr "Выйти"
+
+#: templates/home/index.html:16
 msgid "Sunshine energy is it simple"
 msgstr "Солнечная энергия - это просто"
 
+#: templates/home/index.html:17
 msgid "Easier than ever"
 msgstr "Проще чем когда либо"
 
-#: project/templates/home/index.html:20
+#: templates/home/index.html:23
 msgid "Complete energy independence today"
 msgstr "Полная энергонезависимость уже сегодня"
 
+#: templates/home/index.html:25
+#| msgid ""
+#| "Imagine that you are completely independent of the power supplier, moreover, you do\n"
+#| "                        not pay them, but they pay you!"
 msgid ""
 "Imagine that you are completely independent of the power supplier, moreover,"
 " you do not pay them, but they pay you!"
 msgstr ""
 "Представьте, что вы полностью независимы от энергосети, мало того, не вы "
-"платите им, а они вам! "
+"платите им, а они вам!"
+
+#: templates/home/index.html:51
+msgid "Full state support"
+msgstr "Полная поддержка государства"
+
+#: templates/home/index.html:53
+#| msgid ""
+#| "A simple procedure for issuing documents, connecting a 'green' tariff in the\n"
+#| "                        shortest time"
+msgid ""
+"A simple procedure for issuing documents, connecting a 'green' tariff in the"
+" shortest time"
+msgstr ""
+"Простая процедура оформления документов, подключение \"зеленого\" тарифа в "
+"кратчайшие сроки"
+
+#: templates/home/index.html:61
+msgid "Development of project documentation"
+msgstr "Разработка проектной документации"
+
+#: templates/home/index.html:63
+#| msgid ""
+#| "You do not need to \"run\" through the authorities, we take care of all the\n"
+#| "                        troubles."
+msgid ""
+"You do not need to \"run\" through the authorities, we take care of all the "
+"troubles."
+msgstr ""
+"Вам не потребуется \"бегать\" по инстанциям, все хлопоты мы берем на себя. "
+
+#: templates/home/index.html:88
+msgid "Payback period of the project for 3.3 years"
+msgstr "Окупаемость проекта в течении 3.3 лет"
+
+#: templates/home/index.html:90
+#| msgid ""
+#| "The payback period decreases every year, investing in solar energy is\n"
+#| "                        profitable."
+msgid ""
+"The payback period decreases every year, investing in solar energy is "
+"profitable."
+msgstr ""
+"Срок окупаемости уменьшается с каждым годом, инвестирование в солнечную "
+"энергетику это выгодно."
+
+#: templates/home/index.html:94
+msgid "The calculation was made for a 30 kW station as of early 2018."
+msgstr "Расчет был сделан на 30 кВт станцию по состоянию на начало 2018 г."
+
+#: templates/home/index.html:100
+msgid "Full control over system performance"
+msgstr "Полный контроль над производительностью системы"
+
+#: templates/home/index.html:102
+msgid ""
+"Monitoring systems and automation allow monitoring of all processes in the "
+"system. Control your profits in real time."
+msgstr ""
+"Системы контроля и автоматика позволяют следить за всеми процессами в "
+"системе. Контролируйте свою прибыль в реальном времени."
+
+#~ msgid "Cancel"
+#~ msgstr "Отмена"
+
+#~ msgid "Settings"
+#~ msgstr "Настройки"
+
+#~ msgid "Confirm deletion"
+#~ msgstr "Подтвердить удаление"
+
+#~ msgid "Submit"
+#~ msgstr "Отправить"
+
+#~ msgid "All right!"
+#~ msgstr "Все в порядке!"
+
+#~ msgid "You don`t have permissions for viewing this page"
+#~ msgstr "У вас нет прав на просмотр этой страницы"

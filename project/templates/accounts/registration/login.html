@@ -4,12 +4,16 @@
 {#{% block bootstrap4_title %}Login{% endblock %}#}
 {% block bootstrap4_content %}
     <div class="col-lg-4 offset-lg-4">
-        <form method="post" action="{% url 'login' %}" name="login_form">
-            {% bootstrap_form form %}
-            {% trans 'Log in' as login %}
-            {% bootstrap_button login button_type="submit" button_class="btn-primary" %}
-            {% csrf_token %}
-        </form>
-        <p><a href="{% url 'password_reset' %}">{% trans 'Lost password?' %}</a></p>
+        <div class="card">
+            <div class="card-body">
+                <form method="post" action="{% url 'login' %}" name="login_form">
+                    {% bootstrap_form form %}
+                    {% trans 'Log in' as login %}
+                    {% bootstrap_button login button_type="submit" button_class="btn-primary" %}
+                    {% csrf_token %}
+                </form>
+                <p><a href="{% url 'password_reset' %}">{% trans 'Lost password?' %}</a></p>
+            </div>
+        </div>
     </div>
 {% endblock %}

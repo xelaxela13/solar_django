@@ -22,20 +22,21 @@ jQuery(document).ready(function () {
     });
 
     // messages notification
-    const messages = $('.alert'),
-        messages_height = messages.outerHeight();
-    var pos = messages.position().top;
-
-    $.each(messages, function (index, element) {
-        if (index > 0) {
-            pos += messages_height + 10;
-            $(element).css('top', pos);
-        }
-    });
-    window.setTimeout(function () {
-        messages.fadeTo(500, 0).slideUp(500, function () {
-            $(this).remove();
+    const messages = $('.alert');
+    if (messages.length > 0) {
+        const messages_height = messages.outerHeight();
+        var pos = messages.position().top;
+        $.each(messages, function (index, element) {
+            if (index > 0) {
+                pos += messages_height + 10;
+                $(element).css('top', pos);
+            }
         });
-    }, 4000);
+        window.setTimeout(function () {
+            messages.fadeTo(500, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, 4000);
+    }
 
 });
