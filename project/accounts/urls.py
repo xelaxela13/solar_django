@@ -1,11 +1,11 @@
 from django.urls import path
-from .views import AccountsSignup, AccountsPanel, AccountsUpdate, AccountsUsersList
+from .views import AccountsSignup, AccountsPanel, AccountsUpdate, AccountsUsersList, AccountsLogin
 from django.contrib.auth import views
 from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('signup/', AccountsSignup.as_view(), name='signup'),
-    path('login/', views.LoginView.as_view(template_name='accounts/registration/login.html'), name='login'),
+    path('login/', AccountsLogin.as_view(), name='login'),
     path('panel/', login_required(AccountsPanel.as_view()), name='panel'),
     path('panel/<int:pk>', AccountsUpdate.as_view(), name='user_update'),
     path('panel/userslist', AccountsUsersList.as_view(), name='users_list'),

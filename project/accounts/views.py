@@ -10,6 +10,7 @@ from django.conf import settings
 from project.seometa import MetadataMixin
 from django.contrib.admin.views.decorators import staff_member_required
 from django.utils.decorators import method_decorator
+from django.contrib.auth.views import LoginView
 
 
 def get_client_ip(request):
@@ -35,11 +36,18 @@ def get_location(request):
     return city
 
 
-class AccountsSignup(SuccessMessageMixin, CreateView):
+class AccountsLogin(SuccessMessageMixin, MetadataMixin, LoginView):
+    template_name = 'accounts/registration/login.html'
+    title = _('Log in')
+    success_url = reverse_lazy('panel')
+
+
+class AccountsSignup(SuccessMessageMixin, MetadataMixin, CreateView):
     template_name = 'accounts/registration/signup.html'
     form_class = SignUpForm
     success_url = reverse_lazy('login')
     success_message = _('Registration was successful, please log in')
+    title = _('Sign up')
 
     def get_initial(self):
         initial = super(AccountsSignup, self).get_initial()
@@ -56,7 +64,7 @@ class AccountsSignup(SuccessMessageMixin, CreateView):
 
 class AccountsPanel(SuccessMessageMixin, MetadataMixin, TemplateView):
     title = _('Control panel')
-    description = _('My description')
+    description = _('Control panel')
     template_name = 'accounts/panel/panel.html'
 
     def get(self, request, *args, **kwargs):
