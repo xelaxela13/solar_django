@@ -25,7 +25,7 @@
 .circle_block.second::after {
   content: '2';
   left: 60%;
-  color: #98aba2;
+  color: #474a51;
 }
 .circle_block.third::after {
   content: '3';
@@ -53,7 +53,7 @@
 }
 .circle:hover {
   border-width: 15px;
-  border-color: #d0d9d5;
+  border-color: #848993;
   transition: all 0.2s ease-in;
 }
 .circle:hover img {
@@ -62,6 +62,28 @@
 }
 .circle:not(:hover) {
   transition: all 0.3s ease-out;
+}
+.img_lief {
+  width: 150px;
+  background: white;
+  padding: 10px;
+  border-radius: 50% 0;
+}
+.electric::before {
+  content: '';
+  background: url("/static/images/home/index/electric_towel_2.svg") no-repeat;
+  position: absolute;
+  top: -160px;
+  right: 5%;
+  width: 200px;
+  height: 160px;
+  opacity: .6;
+}
+.city {
+  margin-bottom: -3rem;
+}
+.city img {
+  height: 300px;
 }
 /* switch language */
 .switch_language_label {
@@ -127,12 +149,6 @@ body {
   font-weight: 300;
   color: #333;
 }
-a {
-  color: #98aba2;
-}
-a:hover {
-  color: #ffae00;
-}
 h1,
 h2,
 h3,
@@ -164,10 +180,30 @@ h6 {
     height: 100%;
   }
 }
+.border_right_dashed {
+  border-right: 1px dashed;
+}
+.border_top_dashed {
+  border-top: 1px dashed;
+}
+.border-bottom-dashed {
+  border-bottom: 1px dashed;
+}
+.zigzag {
+  text-align: center;
+}
+.zigzag::after {
+  content: '';
+  background: url("/static/images/zigzag.svg") repeat-x;
+  width: 30%;
+  height: 10px;
+  display: block;
+  margin: 5px auto auto;
+}
 footer {
-  min-height: 200px;
-  background: #1f2522;
+  background: #0b0c0d;
   padding: 20px 0;
+  color: white;
 }
 footer .logo img {
   width: 150px;

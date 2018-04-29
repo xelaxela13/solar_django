@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from .forms import SignUpForm
 import requests
 from django.views.generic.edit import CreateView, UpdateView
@@ -8,6 +8,8 @@ from django.contrib.messages.views import SuccessMessageMixin, messages
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 from project.seometa import MetadataMixin
+from django.contrib.admin.views.decorators import staff_member_required
+from django.utils.decorators import method_decorator
 
 
 def get_client_ip(request):
@@ -69,3 +71,11 @@ class AccountsUpdate(SuccessMessageMixin, MetadataMixin, UpdateView):
     fields = ['first_name', 'last_name', 'email', 'phone', 'location']
     success_url = reverse_lazy('panel')
     success_message = _('Updated success!')
+
+
+@method_decorator(staff_member_required, name='dispatch')
+class AccountsUsersList(SuccessMessageMixin, MetadataMixin, ListView):
+    title = _('A list of users')
+    model = User
+    template_name = 'accounts/panel/users_list.html'
+

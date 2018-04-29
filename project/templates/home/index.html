@@ -17,9 +17,9 @@
             <h2>{% trans 'Easier than ever' %}</h2>
         </div>
     </div>
-    <div class="col-lg-12 p-0 vertical_line">
+    <div class="col-lg-12 p-0 pb-5 vertical_line">
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-4 border-bottom-dashed">
                 <h3>{% trans 'Complete energy independence today' %}</h3>
                 <div class="description">
                     {% blocktrans trimmed %}
@@ -47,7 +47,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 border-bottom-dashed">
                 <h3>{% trans 'Full state support' %}</h3>
                 <div class="description">
                     {% blocktrans trimmed %}
@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-4 border-bottom-dashed">
                 <h3>{% trans 'Development of project documentation' %}</h3>
                 <div class="description">
                     {% blocktrans trimmed %}
@@ -84,7 +84,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 border-bottom-dashed">
                 <h3>{% trans 'Payback period of the project for 3.3 years' %}*</h3>
                 <div class="description">
                     {% blocktrans trimmed %}
@@ -96,7 +96,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-4 border-bottom-dashed">
                 <h3>{% trans 'Full control over system performance' %}</h3>
                 <div class="description">
                     {% blocktrans trimmed %}
@@ -115,6 +115,49 @@
             <div class="col-lg-4"></div>
         </div>
     </div>
+    <div class="col-lg-12 p-0">
+        <div class="jumbotron electric">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 border_right_dashed">
+                        <h3>{% trans 'For the private clients' %}</h3>
+                        <p>
+                            На сегодняшний день инвестирование в солнечную электростанцию по своей привлекательности
+                            обошло инвестирование в недвижимость, достаточно быстрая окупаемость и стабильный доход не
+                            зависящий от внешних факторов на рынки, сделало солнечную энергетику отраслью будущего.
+                            Уже несколько лет этот вид инвестирования стал доступен для физических лиц, и частных
+                            домовладений.
+                        </p>
+                        <p>
+                            <a href="//zakon4.rada.gov.ua/laws/show/514-19/paran6#n6" target="_blank">Закон Украины</a>
+                        </p>
+                        <p>
+                            <a href="//zakon4.rada.gov.ua/laws/show/z0619-16" target="_blank">Постановление НКРЭКУ</a>
+                        </p>
+                        <h5 class="zigzag border_top_dashed py-3">Что нужно для подключения «зеленого тарифа»?</h5>
+                        <p class="text-center">
+                            <img src="{% static 'images/home/index/9.png' %}" class="img_lief">
+                        </p>
+                        <ul>
+                            <li>Выбрать солнечную электростанцию мощностью до 30кВт</li>
+                            <li>Смонтировать ее на объекте (на крыше дома или на участке)</li>
+                            <li>Подать заявление в РЭС (форма заявление есть у них)</li>
+                            <li>Дождаться инспектора и монтажников для установки специального счетчика который будет
+                                считать электроэнергию выработанную вашими солнечными панелями
+                            </li>
+                            <li>Подключить солнечную электростанцию к новому счетчику</li>
+                            <li>Подписать договор на продажу электроэнергии с Облэнерго</li>
+                            <li>Получать прибыль на свой расчетный счет</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3>{% trans 'For legal entities' %}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mx-auto city"><img src="{% static 'images/home/index/city.svg' %}"></div>
 {% endblock %}
 {% block bootstrap4_after_content %}{% include 'footer.html' %}{% endblock %}
 
