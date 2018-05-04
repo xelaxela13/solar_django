@@ -134,14 +134,18 @@ USE_L10N = True
 USE_TZ = True
 
 SHOW_LANG_SWITCH = False
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
-
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'asset')
 STATICFILES_DIRS = [
     'asset_dev'
 ]
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
 SITE_LOGO_FIRST = os.path.join(STATIC_URL, 'images/iceberg_logo_2.svg')
 SITE_LOGO_SECOND = os.path.join(STATIC_URL, 'images/iceberg_logo.svg')
 

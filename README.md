@@ -29,3 +29,5 @@ from decouple import config
 
 SECRET_KEY = config('SECRET_KEY')
 
+For create default .env file: python set_default_env_vars.py
+
