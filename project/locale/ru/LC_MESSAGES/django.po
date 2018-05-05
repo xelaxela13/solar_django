@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-30 12:20+0300\n"
-"PO-Revision-Date: 2018-04-29 20:38+0202\n"
+"PO-Revision-Date: 2018-05-05 13:53+0202\n"
 "Last-Translator: b'  <xelaxela13@gmail.com>'\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -127,11 +127,11 @@ msgstr "Вы спросите нас - для чего мне регистрир
 #: templates/accounts/registration/signup.html:10
 msgid ""
 "After registration, you will be available prices and calculations for the "
-"payback of the solar station. Registration takes only a few seconds and does "
-"not require additional action or confirmation of the email."
+"payback of the solar station. Registration takes only a few seconds and does"
+" not require additional action or confirmation of the email."
 msgstr ""
-"После регистрации вам будут доступны цены и расчеты по окупаемости солнечной "
-"станции. Регистрация займет всего несколько секунд и не потребует "
+"После регистрации вам будут доступны цены и расчеты по окупаемости солнечной"
+" станции. Регистрация займет всего несколько секунд и не потребует "
 "дополнительных действий или подтверждения имайла."
 
 #: templates/header.html:11
@@ -160,8 +160,8 @@ msgstr "Полная энергонезависимость уже сегодн�
 
 #: templates/home/index.html:25
 msgid ""
-"Imagine that you are completely independent of the power supplier, moreover, "
-"you do not pay them, but they pay you!"
+"Imagine that you are completely independent of the power supplier, moreover,"
+" you do not pay them, but they pay you!"
 msgstr ""
 "Представьте, что вы полностью независимы от энергосети, мало того, не вы "
 "платите им, а они вам!"
@@ -172,8 +172,8 @@ msgstr "Полная поддержка государства"
 
 #: templates/home/index.html:53
 msgid ""
-"A simple procedure for issuing documents, connecting a 'green' tariff in the "
-"shortest time"
+"A simple procedure for issuing documents, connecting a 'green' tariff in the"
+" shortest time"
 msgstr ""
 "Простая процедура оформления документов, подключение \"зеленого\" тарифа в "
 "кратчайшие сроки"
@@ -207,7 +207,7 @@ msgstr "Расчет был сделан на 30 кВт станцию по со
 
 #: templates/home/index.html:95
 msgid "Download solar plant payback calculation"
-msgstr ""
+msgstr "Скачать график окупаемости солнечной станции"
 
 #: templates/home/index.html:101
 msgid "Full control over system performance"

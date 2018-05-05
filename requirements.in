@@ -5,3 +5,4 @@ requests
 django-rosetta
 django-meta
 python-decouple
+psycopg2

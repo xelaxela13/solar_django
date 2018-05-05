@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 
 class User(AbstractUser):
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['username']
     location = models.CharField(max_length=30, blank=True, verbose_name=_('City'))
     phone = models.CharField(max_length=15, blank=True, verbose_name=_('Phone number'),
                              help_text=_('Required field. Please enter your phone number'), unique=True)
@@ -21,3 +21,10 @@ class User(AbstractUser):
 
     def get_absolute_url(self):
         return reverse('user_update', kwargs={'pk': self.pk})
+
+    def save(self, *args, **kwargs):
+        try:
+            self.username = self.email.split('@')[0]
+        except IndexError:
+            self.username = self.email
+        super().save(*args, **kwargs)

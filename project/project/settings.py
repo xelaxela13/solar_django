@@ -83,10 +83,16 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'read_default_file': os.path.join(os.path.dirname(__file__), 'db.cfg'),
-        },
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'solar_django',
+        'USER': 'postgres',
+        'PASSWORD': '054489473',
+        'HOST': 'localhost',
+        'PORT': '',
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'OPTIONS': {
+        #     'read_default_file': os.path.join(os.path.dirname(__file__), 'db.cfg'),
+        # },
     }
 }
 
