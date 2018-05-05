@@ -107,3 +107,6 @@ virtenv/
 # pycharm
 .idea/
 .idea
+
+#node.js
+node_modules/
