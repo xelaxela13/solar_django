@@ -146,7 +146,7 @@ SHOW_LANG_SWITCH = False
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'asset')
 STATICFILES_DIRS = [
-    'asset_dev'
+    os.path.join(BASE_DIR, 'asset_dev')
 ]
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
