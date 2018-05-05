@@ -171,9 +171,9 @@ META_USE_OG_PROPERTIES = True
 META_USE_TWITTER_PROPERTIES = False
 META_INCLUDE_KEYWORDS = ['django', 'bootstrap']
 
-# DB Heroku
+# DB Heroku, uncomment when deploy to Heroku
 import dj_database_url
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 # Activate Django-Heroku.
 import django_heroku
