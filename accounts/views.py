@@ -1,3 +1,4 @@
+from django.template.response import TemplateResponse
 from django.views.generic import TemplateView, ListView
 from .forms import SignUpForm
 import requests
@@ -11,6 +12,8 @@ from project.seometa import MetadataMixin
 from django.contrib.admin.views.decorators import staff_member_required
 from django.utils.decorators import method_decorator
 from django.contrib.auth.views import LoginView
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
 
 
 def get_client_ip(request):
@@ -27,13 +30,25 @@ def get_client_ip(request):
 def get_location(request):
     ip_address = get_client_ip(request)
     response = requests.get('http://api.ipstack.com/{}'.format(ip_address), timeout=5, verify=False,
-                            params={'access_key': settings.IPSTACK_ACCESS_KEY, 'language': 'ru'})
+                            params={'access_key': settings.IPSTACK_ACCESS_KEY, 'language': request.LANGUAGE_CODE})
     geodata = response.json()
     try:
         city = geodata['city']
     except KeyError:
         return ''
     return city
+
+
+@csrf_exempt
+def choice_location_manual(request):
+    data = {'city': ''}
+    if request.POST:
+        try:
+            data['city'] = request.POST['location']
+        except KeyError:
+            pass
+        return JsonResponse(data=data)
+    return TemplateResponse(request, 'accounts/choice_location_manual.html')
 
 
 class AccountsLogin(SuccessMessageMixin, MetadataMixin, LoginView):
@@ -52,8 +67,8 @@ class AccountsSignup(SuccessMessageMixin, MetadataMixin, CreateView):
     def get_initial(self):
         initial = super(AccountsSignup, self).get_initial()
         city = get_location(self.request)
-        initial['location'] = city
-        messages.info(self.request, '{}'.format(city))
+        if city:
+            initial['location'] = city
         return initial
 
     def get_form(self, form_class=None):
@@ -80,10 +95,16 @@ class AccountsUpdate(SuccessMessageMixin, MetadataMixin, UpdateView):
     success_url = reverse_lazy('panel')
     success_message = _('Updated success!')
 
+    def get_initial(self):
+        initial = super().get_initial()
+        city = get_location(self.request)
+        if city:
+            initial['location'] = city
+        return initial
+
 
 @method_decorator(staff_member_required, name='dispatch')
 class AccountsUsersList(SuccessMessageMixin, MetadataMixin, ListView):
     title = _('A list of users')
     model = User
     template_name = 'accounts/panel/users_list.html'
-

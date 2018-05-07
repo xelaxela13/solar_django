@@ -178,7 +178,7 @@ META_INCLUDE_KEYWORDS = ['django', 'bootstrap']
 
 # DB Heroku, uncomment it when deploy to Heroku
 import dj_database_url
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 # Activate Django-Heroku, uncomment it when deploy to Heroku
 import django_heroku

@@ -2,8 +2,6 @@
 {% load bootstrap4 %}
 {% load i18n %}
 
-{% block bootstrap4_extra_head %}{% endblock %}
-{% block bootstrap4_before_content %}{% include 'header.html' %}{% endblock %}
 {% block bootstrap4_content %}
     <div class="col-lg-4">
         <div class="card">
@@ -32,4 +30,3 @@
         {% block bootstrap_panel_content %}{% endblock %}
     </div>
 {% endblock %}
-{% block bootstrap4_after_content %}{% include 'footer.html' %}{% endblock %}
