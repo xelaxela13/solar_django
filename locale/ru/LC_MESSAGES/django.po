@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-07 10:07+0300\n"
-"PO-Revision-Date: 2018-05-07 10:08+0202\n"
+"PO-Revision-Date: 2018-05-07 20:49+0202\n"
 "Last-Translator: b'  <xelaxela13@gmail.com>'\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -29,11 +29,11 @@ msgstr "Обязательное поле. Введите свой email"
 
 #: accounts/models.py:16
 msgid "user"
-msgstr ""
+msgstr "пользователь"
 
 #: accounts/models.py:17
 msgid "users"
-msgstr ""
+msgstr "пользователи"
 
 #: accounts/views.py:54 templates/accounts/registration/login.html:18
 #: templates/header.html:25

@@ -10,7 +10,7 @@ urlpatterns = [
     path('panel/', login_required(AccountsPanel.as_view()), name='panel'),
     path('panel/<int:pk>', AccountsUpdate.as_view(), name='user_update'),
     path('panel/userslist', AccountsUsersList.as_view(), name='users_list'),
-    path('choice_location_manual/', choice_location_manual, name='choice_location_manual'),
+    path('ajax/choice_location_manual/', choice_location_manual, name='choice_location_manual'),
     # standard django.contrib.auth templates
     path('logout/', views.LogoutView.as_view(), name='logout'),
     path('password_change/', views.PasswordChangeView.as_view(), name='password_change'),
