@@ -1,0 +1,5 @@
+'NAME': 'solar_django',
+'USER': 'postgres',
+'PASSWORD': '054489473',
+'HOST': 'localhost',
+'PORT': '5432',
