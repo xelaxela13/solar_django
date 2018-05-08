@@ -89,7 +89,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'OPTIONS': {
-            'read_default_file': os.path.join(os.path.dirname(__file__), 'db_psql'),
+            'read_default_file': os.path.join(os.path.dirname(__file__), 'db_psql_docker'),
         },
     }
 }
@@ -171,9 +171,9 @@ META_USE_TWITTER_PROPERTIES = False
 META_INCLUDE_KEYWORDS = ['django', 'bootstrap']
 
 # DB Heroku, uncomment it when deploy to Heroku
-import dj_database_url
+# import dj_database_url
 # DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 # Activate Django-Heroku, uncomment it when deploy to Heroku
-import django_heroku
-django_heroku.settings(locals())
+# import django_heroku
+# django_heroku.settings(locals())
