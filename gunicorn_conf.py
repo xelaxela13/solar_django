@@ -47,7 +47,7 @@ preload = True
 # umask = 0o002
 
 # The socket to bind. [127.0.0.1:8000]
-bind = '0.0.0.0:8000'
+bind = 'localhost:5000'
 
 # The maximum number of pending connections.     [2048]
 #  - Amazon Linux default=1024 ($ sysctl net.ipv4.tcp_max_syn_backlog)
