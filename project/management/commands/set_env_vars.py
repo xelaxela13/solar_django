@@ -13,14 +13,24 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         config = configparser.ConfigParser()
-        config.optionxform = str
+        config.optionxform = lambda x: x.upper()
         while True:
             try:
-                config['SETTINGS'] = {
+                config['SETTINGS']= {
                     'SECRET_KEY': self.random_string,
-                    'ALLOWED_HOSTS': 'localhost, 127.0.0.1',
+                    'ALLOWED_HOSTS': '127.0.0.1',
                     'DEBUG': False,
-                    'IPSTACK_ACCESS_KEY': '0e3e331a2e84afc272c53c97982cc67c'
+                    'IPSTACK_ACCESS_KEY': '0e3e331a2e84afc272c53c97982cc67c',
+                    'GMAIL_PASSWORD': '',
+                    'GMAIL_USER': ''
+
+                }
+                config['DB']= {
+                    'name': 'solar_django',
+                    'USER': 'postgres',
+                    'PASSWORD': 'postgres',
+                    'HOST': '127.0.0.1',
+                    'PORT': '5432'
                 }
                 break
             except ValueError:

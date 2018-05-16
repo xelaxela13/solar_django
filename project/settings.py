@@ -14,6 +14,7 @@ import os
 from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
@@ -26,8 +27,6 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', cast=bool, default=False)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')], default='*')
-
-SITE_ID = 1
 
 # Application definition
 INSTALLED_APPS = [
@@ -87,11 +86,11 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
     }
 }
-from project.utils import add_settings
-add_settings(DATABASES, os.path.join(BASE_DIR, 'project/db_psql_docker'))
+from project.utils import get_db_settings
+get_db_settings(DATABASES, os.path.join(BASE_DIR, '.env'))
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -136,7 +135,17 @@ USE_L10N = True
 
 USE_TZ = True
 
-SHOW_LANG_SWITCH = True
+SHOW_LANG_SWITCH = False
+
+# Email send
+# https://docs.djangoproject.com/en/2.0/topics/email/
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PASSWORD = config('GMAIL_PASSWORD', default='')
+EMAIL_HOST_USER = config('GMAIL_USER', default='')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+# EMAIL_USE_SSL = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
@@ -160,14 +169,14 @@ IPSTACK_ACCESS_KEY = config('IPSTACK_ACCESS_KEY', default='')
 #  Meta settings https://django-meta.readthedocs.io/en/latest/settings.html
 META_SITE_PROTOCOL = 'http'
 META_SITE_DOMAIN = 'localhost'
-META_SITE_NAME = 'Site name'
+META_SITE_NAME = 'Солнечная энергетика'
 META_BASE_TITLE = META_SITE_NAME
 META_BASE_DESCRIPTION = META_SITE_NAME
 META_USE_TITLE_TAG = True
 META_USE_GOOGLEPLUS_PROPERTIES = False
 META_USE_OG_PROPERTIES = True
 META_USE_TWITTER_PROPERTIES = False
-META_INCLUDE_KEYWORDS = ['django', 'bootstrap']
+META_INCLUDE_KEYWORDS = ['солнечные батареи', 'зеленый тариф']
 
 # DB Heroku, uncomment it when deploy to Heroku
 # import dj_database_url

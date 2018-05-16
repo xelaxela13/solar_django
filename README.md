@@ -29,7 +29,9 @@ from decouple import config
 
 SECRET_KEY = config('SECRET_KEY')
 
-For create default .env file: python set_default_env_vars.py
+To be create default .env file run:
+
+set_env_vars.sh
 
 Heroku deploy
 -------------
@@ -51,3 +53,25 @@ Heroku deploy
 
 7. heroku open
 
+Start wsgi using gunicorn
+-------------------------
+sudo gunicorn -c gunicorn_conf.py project.wsgi
+
+Gmail settings
+--------------
+
+https://accounts.google.com/DisplayUnlockCaptcha
+
+https://www.google.com/settings/security/lesssecureapps
+
+Deploy to VPS using nginx
+-------------------------
+In folder /home/USER/web/domain_name/public_html
+
+1. git clone https://github.com/xelaxela13/solar_django.git
+2. cd solar_django
+3. virtualenv -p python3 ./virtenv
+4. source ./virtenv/bin/activate
+5. pip install -r requrements.txt
+6. export SECRET_KEY=some loooong string
+7. python manage.py set_env_vars .env
