@@ -201,6 +201,9 @@ h6 {
   display: block;
   margin: 5px auto auto;
 }
+.preview img {
+  max-height: 50px;
+}
 footer {
   background: #0b0c0d;
   padding: 20px 0;

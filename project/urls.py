@@ -36,6 +36,12 @@ urlpatterns_untranslate = [
 urlpatterns_translate = [
     path('', include('home.urls')),
     path('accounts/', include('accounts.urls')),
+    path('upload/', include('fileupload.urls'))
 ]
 
 urlpatterns = staticfiles_urlpatterns() + urlpatterns_untranslate + use_i18n(urlpatterns_translate)
+
+if settings.DEBUG:
+    from django.conf.urls.static import static
+
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

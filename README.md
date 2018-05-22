@@ -73,5 +73,4 @@ In folder /home/USER/web/domain_name/public_html
 3. virtualenv -p python3 ./virtenv
 4. source ./virtenv/bin/activate
 5. pip install -r requrements.txt
-6. export SECRET_KEY=some loooong string
-7. python manage.py set_env_vars .env
+6. set_env_vars.sh

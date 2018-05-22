@@ -10,12 +10,17 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
-import os
+from os import path
 from decouple import config
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# Build paths inside the project like this: path.join(BASE_DIR, ...)
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = path.dirname(path.dirname(path.abspath(__file__)))
+
+
+def rel(*x):
+    return path.join(BASE_DIR, *x)
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -45,6 +50,7 @@ INSTALLED_APPS = [
     'project',
     'accounts',
     'home',
+    'fileupload'
 ]
 
 MIDDLEWARE = [
@@ -90,7 +96,8 @@ DATABASES = {
     }
 }
 from project.utils import get_db_settings
-get_db_settings(DATABASES, os.path.join(BASE_DIR, '.env'))
+
+get_db_settings(DATABASES, rel('.env'))
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -115,7 +122,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'ru'
+LANGUAGE_CODE = 'ru_Ru'
 
 from django.utils.translation import gettext_lazy as _
 
@@ -125,7 +132,7 @@ LANGUAGES = [
 ]
 
 LOCALE_PATHS = [
-    os.path.join(BASE_DIR, 'locale/'),
+    rel('locale'),
 ]
 TIME_ZONE = 'Europe/Kiev'
 
@@ -150,18 +157,23 @@ EMAIL_USE_TLS = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'asset')
+STATIC_ROOT = rel('asset')
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'asset_dev')
+    rel('asset_dev')
 ]
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-SITE_LOGO_FIRST = os.path.join(STATIC_URL, 'images/iceberg_logo_2.svg')
-SITE_LOGO_SECOND = os.path.join(STATIC_URL, 'images/iceberg_logo.svg')
+SITE_LOGO_FIRST = path.join(STATIC_URL, 'images/iceberg_logo_2.svg')
+SITE_LOGO_SECOND = path.join(STATIC_URL, 'images/iceberg_logo.svg')
 
+# Media files
+# https://docs.djangoproject.com/en/2.0/howto/static-files/#serving-files-uploaded-by-a-user-during-development
+MEDIA_URL = '/media/'
+MEDIA_ROOT = rel('media')
+THUMBNAIL_SIZE = [150, 150]
 #  https://ipstack.com/
 #  free geo api
 IPSTACK_ACCESS_KEY = config('IPSTACK_ACCESS_KEY', default='')
