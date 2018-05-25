@@ -16,7 +16,7 @@ spew = False
 # logconfig = "/opt/example/log.conf"
 
 # The Error log file to write to. [-]
-# errorlog="/var/log/gunicorn.log"
+errorlog="/var/log/gunicorn.log"
 
 # The granularity of Error log outputs. [info]
 loglevel = 'debug'
@@ -32,7 +32,7 @@ preload = True
 
 # forked. [False]
 # daemon=False
-# daemon = True
+daemon = True
 
 # A filename to use for the PID file. [None]
 # pidfile = '/var/run/example.pid'
