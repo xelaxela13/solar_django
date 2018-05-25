@@ -2,6 +2,7 @@
 {% load upload_tags %}
 {% load bootstrap4 %}
 {% load static %}
+{% load i18n %}
 {% block bootstrap4_extra_head %}
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <!-- blueimp Gallery styles -->
@@ -24,20 +25,20 @@
                 <!-- The fileinput-button span is used to style the file input field as button -->
                 <span class="btn btn-success fileinput-button">
                     <i class="glyphicon glyphicon-plus"></i>
-                    <span>Add files...</span>
+                    <span>{% trans 'Add files...' %}</span>
                     <input type="file" name="file" multiple>
                 </span>
                 <button type="submit" class="btn btn-primary start">
                     <i class="glyphicon glyphicon-upload"></i>
-                    <span>Start upload</span>
+                    <span>{% trans 'Start upload' %}</span>
                 </button>
                 <button type="reset" class="btn btn-warning cancel">
                     <i class="glyphicon glyphicon-ban-circle"></i>
-                    <span>Cancel upload</span>
+                    <span>{% trans 'Cancel upload' %}</span>
                 </button>
                 <button type="button" class="btn btn-danger delete">
                     <i class="glyphicon glyphicon-trash"></i>
-                    <span>Delete</span>
+                    <span>{% trans 'Delete' %}</span>
                 </button>
                 <input type="checkbox" class="toggle">
                 <!-- The loading indicator is shown during file processing -->
