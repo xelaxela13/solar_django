@@ -3,21 +3,22 @@
 {% load bootstrap4 %}
 {% load static %}
 {% load i18n %}
+
 {% block bootstrap4_extra_head %}
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+{#    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">#}
     <!-- blueimp Gallery styles -->
     <link rel="stylesheet" href="{% static 'css/fileupload/blueimp-gallery.min.css' %}">
     <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
     <link rel="stylesheet" href="{% static 'css/fileupload/jquery.fileupload-ui.css' %}">
     <!-- CSS adjustments for browsers with JavaScript disabled -->
     <noscript>
-        <link rel="stylesheet" href="{% static '/css/fileupload/jquery.fileupload-ui-noscript.css' %}">
+        <link rel="stylesheet" href="{% static 'css/fileupload/jquery.fileupload-ui-noscript.css' %}">
     </noscript>
 {% endblock %}
 {% block bootstrap_panel_content %}
 
     <!-- The file upload form used as target for the file upload widget -->
-    <form id="fileupload" method="post" action="." enctype="multipart/form-data">{% csrf_token %}
+    <form id="fileupload" method="post" action="." enctype="multipart/form-data">
         {% csrf_token %}
         <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
         <div class="row fileupload-buttonbar">

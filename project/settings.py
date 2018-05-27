@@ -14,11 +14,13 @@ from os import path
 from decouple import config
 
 # Build paths inside the project like this: path.join(BASE_DIR, ...)
+from django.utils import timezone
 
 BASE_DIR = path.dirname(path.dirname(path.abspath(__file__)))
 
 
 def rel(*x):
+    #  For example: rel('log', 'file.log') will to return /var/www/solar_django/log/file.log
     return path.join(BASE_DIR, *x)
 
 
@@ -31,7 +33,9 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool, default=False)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')], default='*')
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')], default='127.0.0.1')
+
+ADMINS = ('xelaxela13@gmail.com',)
 
 # Application definition
 INSTALLED_APPS = [
@@ -50,7 +54,7 @@ INSTALLED_APPS = [
     'project',
     'accounts',
     'home',
-    'fileupload'
+    'fileupload',
 ]
 
 MIDDLEWARE = [
@@ -165,7 +169,12 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
+from whitenoise.storage import CompressedManifestStaticFilesStorage
+
+CompressedManifestStaticFilesStorage.manifest_strict = False
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
 SITE_LOGO_FIRST = path.join(STATIC_URL, 'images/iceberg_logo_2.svg')
 SITE_LOGO_SECOND = path.join(STATIC_URL, 'images/iceberg_logo.svg')
 
@@ -173,7 +182,8 @@ SITE_LOGO_SECOND = path.join(STATIC_URL, 'images/iceberg_logo.svg')
 # https://docs.djangoproject.com/en/2.0/howto/static-files/#serving-files-uploaded-by-a-user-during-development
 MEDIA_URL = '/media/'
 MEDIA_ROOT = rel('media')
-THUMBNAIL_SIZE = [150, 150]
+THUMBNAIL_SIZE = [250, 250]
+
 #  https://ipstack.com/
 #  free geo api
 IPSTACK_ACCESS_KEY = config('IPSTACK_ACCESS_KEY', default='')
@@ -185,9 +195,6 @@ META_SITE_NAME = 'Солнечная энергетика'
 META_BASE_TITLE = META_SITE_NAME
 META_BASE_DESCRIPTION = META_SITE_NAME
 META_USE_TITLE_TAG = True
-META_USE_GOOGLEPLUS_PROPERTIES = False
-META_USE_OG_PROPERTIES = True
-META_USE_TWITTER_PROPERTIES = False
 META_INCLUDE_KEYWORDS = ['солнечные батареи', 'зеленый тариф']
 
 # DB Heroku, uncomment it when deploy to Heroku
@@ -197,3 +204,73 @@ META_INCLUDE_KEYWORDS = ['солнечные батареи', 'зеленый т
 # Activate Django-Heroku, uncomment it when deploy to Heroku
 # import django_heroku
 # django_heroku.settings(locals())
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt': "%d/%b/%Y %H:%M:%S"
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        }
+    },
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        }
+    },
+    'handlers': {
+        'file_log': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'mode': 'w' if DEBUG else 'a',
+            'filename': rel('log', '{}_django.log'.format(timezone.now().strftime('%Y%m%d'))),
+            'formatter': 'verbose',
+        },
+        'secure_file_log': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': rel('log', '{}_secure.log'.format(timezone.now().strftime('%Y%m%d'))),
+            'formatter': 'verbose',
+        },
+        'request_file_log': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': rel('log', '{}_request.log'.format(timezone.now().strftime('%Y%m%d'))),
+            'formatter': 'verbose',
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+            'formatter': 'verbose',
+            'include_html': True,
+        },
+        'console': {
+            'level': 'INFO',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file_log', 'console'],
+            'propagate': True,
+            'level': 'DEBUG',
+        },
+        'django.request': {
+            'handler': ['mail_admins', 'request_file_log'],
+            'propagate': True,
+            'level': 'ERROR',
+            'email_backend': 'django.core.mail.backends.smtp.EmailBackend',
+        },
+        'django.security': {
+            'handlers': ['secure_file_log'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+    }
+}

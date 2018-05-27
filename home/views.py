@@ -1,9 +1,8 @@
 from django.views.generic import TemplateView
-from project.seometa import MetadataMixin
+from project.seometa import MyMetadataMixin
 from django.utils.translation import gettext_lazy as _
 
 
-class Index(MetadataMixin, TemplateView):
-    title = _('IceBERG solar systems company')
+class Index(MyMetadataMixin, TemplateView):
+    title = _('IceBERG')
     template_name = 'home/index.html'
-

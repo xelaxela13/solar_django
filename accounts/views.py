@@ -8,7 +8,7 @@ from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin, messages
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
-from project.seometa import MetadataMixin
+from project.seometa import MyMetadataMixin
 from django.contrib.admin.views.decorators import staff_member_required
 from django.utils.decorators import method_decorator
 from django.contrib.auth.views import LoginView
@@ -51,13 +51,13 @@ def choice_location_manual(request):
     return TemplateResponse(request, 'accounts/choice_location_manual.html')
 
 
-class AccountsLogin(SuccessMessageMixin, MetadataMixin, LoginView):
+class AccountsLogin(SuccessMessageMixin, MyMetadataMixin, LoginView):
     template_name = 'accounts/registration/login.html'
     title = _('Log in')
     success_url = reverse_lazy('panel')
 
 
-class AccountsSignup(SuccessMessageMixin, MetadataMixin, CreateView):
+class AccountsSignup(SuccessMessageMixin, MyMetadataMixin, CreateView):
     template_name = 'accounts/registration/signup.html'
     form_class = SignUpForm
     success_url = reverse_lazy('login')
@@ -77,7 +77,7 @@ class AccountsSignup(SuccessMessageMixin, MetadataMixin, CreateView):
         return form
 
 
-class AccountsPanel(SuccessMessageMixin, MetadataMixin, TemplateView):
+class AccountsPanel(SuccessMessageMixin, MyMetadataMixin, TemplateView):
     title = _('Control panel')
     description = _('Control panel')
     template_name = 'accounts/panel/panel.html'
@@ -87,7 +87,7 @@ class AccountsPanel(SuccessMessageMixin, MetadataMixin, TemplateView):
         return super(AccountsPanel, self).get(request, *args, **kwargs)
 
 
-class AccountsUpdate(SuccessMessageMixin, MetadataMixin, UpdateView):
+class AccountsUpdate(SuccessMessageMixin, MyMetadataMixin, UpdateView):
     title = _('Update account')
     model = User
     template_name = 'accounts/panel/update.html'
@@ -104,7 +104,7 @@ class AccountsUpdate(SuccessMessageMixin, MetadataMixin, UpdateView):
 
 
 @method_decorator(staff_member_required, name='dispatch')
-class AccountsUsersList(SuccessMessageMixin, MetadataMixin, ListView):
+class AccountsUsersList(SuccessMessageMixin, MyMetadataMixin, ListView):
     title = _('A list of users')
     model = User
     template_name = 'accounts/panel/users_list.html'
