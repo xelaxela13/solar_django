@@ -24,12 +24,13 @@ def serialize(instance, file_attr='file'):
     file_attr -- attribute name that contains the FileField or ImageField
 
     """
-    obj = getattr(instance, file_attr)
+    obj = getattr(instance, file_attr, '')
+    thumb = getattr(instance, 'thumbnail', '')
     return {
         'url': obj.url,
         'name': order_name(obj.name),
         'type': mimetypes.guess_type(obj.path)[0] or 'image/png',
-        'thumbnailUrl': obj.url,
+        'thumbnailUrl': thumb.url,
         'size': obj.size,
         'deleteUrl': reverse('upload-delete', args=[instance.pk]),
         'deleteType': 'DELETE',
