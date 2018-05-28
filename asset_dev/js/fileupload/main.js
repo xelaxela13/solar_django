@@ -14,16 +14,16 @@
 
 $(function () {
     'use strict';
-
+    const fileupload_form=$('#fileupload');
     // Initialize the jQuery File Upload widget:
-    $('#fileupload').fileupload({
+    fileupload_form.fileupload({
         // Uncomment the following to send cross-domain cookies:
         //xhrFields: {withCredentials: true},
         //url: 'server/php/'
     });
 
     // Enable iframe cross-domain access via redirect option:
-    $('#fileupload').fileupload(
+    fileupload_form.fileupload(
         'option',
         'redirect',
         window.location.href.replace(
@@ -34,7 +34,7 @@ $(function () {
 
     if (window.location.hostname === 'blueimp.github.io') {
         // Demo settings:
-        $('#fileupload').fileupload('option', {
+        fileupload_form.fileupload('option', {
             url: '//jquery-file-upload.appspot.com/',
             // Enable image resizing, except for Android and Opera,
             // which actually support image resizing, but fail to
@@ -58,14 +58,14 @@ $(function () {
         }
     } else {
         // Load existing files:
-        $('#fileupload').addClass('fileupload-processing');
+        fileupload_form.addClass('fileupload-processing');
         $.ajax({
             // Uncomment the following to send cross-domain cookies:
             //xhrFields: {withCredentials: true},
             //url: $('#fileupload').fileupload('option', 'url'),
-            url: '/upload/view/',
+            url: fileupload_form.data('list'),
             dataType: 'json',
-            context: $('#fileupload')[0]
+            context: fileupload_form[0]
         }).always(function () {
             $(this).removeClass('fileupload-processing');
         }).done(function (result) {
