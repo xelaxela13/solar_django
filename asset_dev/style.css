@@ -83,7 +83,28 @@
   margin-bottom: -3rem;
 }
 .city img {
-  height: 300px;
+  height: 35vh;
+}
+ul.pictures {
+  padding: 0;
+}
+ul.pictures li {
+  list-style: none;
+  display: inline-flex;
+  height: 150px;
+  overflow: hidden;
+  width: 150px;
+  justify-content: center;
+  align-items: center;
+  margin: -4px;
+}
+ul.pictures li:hover img {
+  transform: scale(0.8);
+  transition: all 0.2s ease-in;
+}
+ul.pictures li:not(:hover) img {
+  transform: scale(1);
+  transition: all 0.1s ease-out;
 }
 /* switch language */
 .switch_language_label {
@@ -161,6 +182,9 @@ h6 {
 .show {
   display: block !important;
 }
+.vertical_line {
+  position: relative;
+}
 .vertical_line::before {
   content: '';
   position: absolute;
@@ -168,6 +192,7 @@ h6 {
   height: 100%;
   background-repeat: repeat-y;
   z-index: -1;
+  left: 0;
 }
 .vertical_line::before {
   background-image: url("/static/images/vertical_line.svg");
@@ -212,5 +237,10 @@ footer {
 footer .logo img {
   width: 150px;
   filter: invert(100%);
+}
+@media screen and (max-width: 768px) {
+  .city img {
+    height: 15vh;
+  }
 }
 /*# sourceMappingURL=style.css.map */

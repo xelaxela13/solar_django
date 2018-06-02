@@ -15,7 +15,7 @@
             <h2>{% trans 'Easier than ever' %}</h2>
         </div>
     </div>
-    <div class="col-lg-12 p-0 pb-5 vertical_line">
+    <div class="container pb-5 vertical_line">
         <div class="row">
             <div class="col-lg-4 border-bottom-dashed">
                 <h3>{% trans 'Complete energy independence today' %}</h3>
@@ -34,8 +34,6 @@
                 </div>
             </div>
             <div class="col-lg-4"></div>
-        </div>
-        <div class="row">
             <div class="col-lg-4">
             </div>
             <div class="col-lg-4">
@@ -53,8 +51,6 @@
                     {% endblocktrans %}
                 </div>
             </div>
-        </div>
-        <div class="row">
             <div class="col-lg-4 border-bottom-dashed">
                 <h3>{% trans 'Development of project documentation' %}</h3>
                 <div class="description">
@@ -71,8 +67,6 @@
                 </div>
             </div>
             <div class="col-lg-4"></div>
-        </div>
-        <div class="row">
             <div class="col-lg-4">
             </div>
             <div class="col-lg-4">
@@ -93,8 +87,6 @@
                     <p><a href="{% url 'panel' %}">{% trans 'Download solar plant payback calculation' %}</a></p>
                 </div>
             </div>
-        </div>
-        <div class="row">
             <div class="col-lg-4 border-bottom-dashed">
                 <h3>{% trans 'Full control over system performance' %}</h3>
                 <div class="description">
@@ -156,8 +148,8 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-12">
-        {% if pictures %}
+    {% if pictures %}
+        <div class="col-lg-12 text-center">
             <ul id="links" class="pictures">
                 {% for picture in pictures %}
                     <li>
@@ -167,8 +159,8 @@
                     </li>
                 {% endfor %}
             </ul>
-        {% endif %}
-    </div>
+        </div>
+    {% endif %}
     <div class="mx-auto city"><img src="{% static 'images/home/index/city.svg' %}"></div>
 {% endblock %}
 {% block bootstrap4_extra_script %}

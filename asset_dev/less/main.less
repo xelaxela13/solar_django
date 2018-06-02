@@ -14,6 +14,9 @@ h1, h2, h3, h4, h5, h6{
 .show {
     display: block !important;
 }
+.vertical_line{
+    position: relative;
+}
 .vertical_line::before{
     content: '';
     position: absolute;
@@ -21,6 +24,7 @@ h1, h2, h3, h4, h5, h6{
     height: 100%;
     background-repeat: repeat-y;
     z-index: -1;
+    left: 0;
 }
 .vertical_line::before{
     background-image: url("/static/images/vertical_line.svg");
