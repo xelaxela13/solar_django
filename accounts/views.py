@@ -54,7 +54,6 @@ def choice_location_manual(request):
 class AccountsLogin(SuccessMessageMixin, MyMetadataMixin, LoginView):
     template_name = 'accounts/registration/login.html'
     title = _('Log in')
-    success_url = reverse_lazy('panel')
 
 
 class AccountsSignup(SuccessMessageMixin, MyMetadataMixin, CreateView):

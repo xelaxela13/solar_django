@@ -14,13 +14,14 @@ from os import path
 from decouple import config
 
 # Build paths inside the project like this: path.join(BASE_DIR, ...)
+from django.urls import reverse_lazy
 from django.utils import timezone
 
 BASE_DIR = path.dirname(path.dirname(path.abspath(__file__)))
 
 
 def rel(*x):
-    #  For example: rel('log', 'file.log') will to return /var/www/solar_django/log/file.log
+    #  For example: rel('log', 'file.log') will to returned /var/www/solar_django/log/file.log
     return path.join(BASE_DIR, *x)
 
 
@@ -35,7 +36,7 @@ DEBUG = config('DEBUG', cast=bool, default=False)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')], default='127.0.0.1')
 
-ADMINS = ('xelaxela13@gmail.com',)
+ADMINS = [('Alex', 'xelaxela13@gmail.com'),]
 
 # Application definition
 INSTALLED_APPS = [
@@ -106,7 +107,7 @@ get_db_settings(DATABASES, rel('.env'))
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 AUTH_USER_MODEL = 'accounts.User'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = reverse_lazy('panel')
 LOGOUT_REDIRECT_URL = '/'
 AUTH_PASSWORD_VALIDATORS = [
     {
