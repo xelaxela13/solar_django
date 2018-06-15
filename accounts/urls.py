@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import AccountsSignup, AccountsPanel, AccountsUpdate, AccountsUsersList, AccountsLogin,\
-    choice_location_manual
+    choice_location_manual, choice_location_api
 from django.contrib.auth import views
 from django.contrib.auth.decorators import login_required
 
@@ -11,6 +11,7 @@ urlpatterns = [
     path('panel/<int:pk>', AccountsUpdate.as_view(), name='user_update'),
     path('panel/userslist', AccountsUsersList.as_view(), name='users_list'),
     path('ajax/choice_location_manual/', choice_location_manual, name='choice_location_manual'),
+    path('ajax/choice_location_api/', choice_location_api, name='choice_location_api'),
     # standard django.contrib.auth templates
     path('logout/', views.LogoutView.as_view(), name='logout'),
     path('password_change/', views.PasswordChangeView.as_view(), name='password_change'),

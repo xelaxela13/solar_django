@@ -22,7 +22,7 @@ def blueimp_gallery(element_id='links'):
         <ol class="indicator"></ol>
     </div>
     <script>"""
-    b = "document.getElementById('{}').onclick = function (event)".format(element_id)
+    b = "if ($('#{element_id}').length) {{document.getElementById('{element_id}').onclick = function (event)".format(element_id=element_id)
     c = """
         {
             event = event || window.event;
@@ -32,6 +32,7 @@ def blueimp_gallery(element_id='links'):
                 links = this.getElementsByTagName('a');
             blueimp.Gallery(links, options);
         };
+        }
     </script>
     """
     content = a+b+c

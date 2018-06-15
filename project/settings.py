@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
-from os import path
+from os import path, environ
 from decouple import config
 
 # Build paths inside the project like this: path.join(BASE_DIR, ...)
@@ -36,7 +36,7 @@ DEBUG = config('DEBUG', cast=bool, default=False)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')], default='127.0.0.1')
 
-ADMINS = [('Alex', 'xelaxela13@gmail.com'),]
+ADMINS = [('Alex', 'xelaxela13@gmail.com'), ]
 
 # Application definition
 INSTALLED_APPS = [
@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'rosetta',
     'meta',
+    'django_celery_results',
     # local apps
     'project',
     'accounts',
@@ -206,6 +207,22 @@ META_INCLUDE_KEYWORDS = ['солнечные батареи', 'зеленый т
 # import django_heroku
 # django_heroku.settings(locals())
 
+# Google Cloud API
+GOOGLE_APPLICATION_CREDENTIALS = rel('baseprojectdjango-208a1c3136b5.json')
+environ['GOOGLE_APPLICATION_CREDENTIALS'] = rel('baseprojectdjango-208a1c3136b5.json')
+
+# Celery settings
+#: Only add pickle to this list if your broker is secured
+#: from unwanted access (see userguide/security.html)
+
+# REDIS related settings
+CELERY_REDIS_HOST = 'localhost'
+CELERY_REDIS_PORT = '6379'
+BROKER_URL = 'redis://' + CELERY_REDIS_HOST + ':' + CELERY_REDIS_PORT + '/0'
+BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
+CELERY_RESULT_BACKEND = BROKER_URL
+CELERY_TASK_ALWAYS_EAGER = True
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -243,6 +260,13 @@ LOGGING = {
             'filename': rel('log', '{}_request.log'.format(timezone.now().strftime('%Y%m%d'))),
             'formatter': 'verbose',
         },
+        'celery_file_log': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'mode': 'w' if DEBUG else 'a',
+            'filename': rel('log', '{}_celery.log'.format(timezone.now().strftime('%Y%m%d'))),
+            'formatter': 'verbose',
+        },
         'mail_admins': {
             'level': 'ERROR',
             'class': 'django.utils.log.AdminEmailHandler',
@@ -254,7 +278,7 @@ LOGGING = {
             'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler',
             'formatter': 'simple'
-        }
+        },
     },
     'loggers': {
         'django': {
@@ -272,6 +296,11 @@ LOGGING = {
             'handlers': ['secure_file_log'],
             'level': 'ERROR',
             'propagate': False,
+        },
+        'celery': {
+            'handlers': ['celery_file_log'],
+            'level': 'DEBUG',
+            'propagate': False
         },
     }
 }

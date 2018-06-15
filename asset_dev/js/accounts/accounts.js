@@ -1,6 +1,22 @@
 jQuery(document).ready(function () {
     const input_location = $('input[name="location"]');
 
+    function get_location() {
+        const url = '/accounts/ajax/choice_location_api/';
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function (data) {
+                input_location.val(data['city']);
+                if (!input_location.val()) {
+                    dialog_box();
+                }
+            }
+        });
+    }
+
+    get_location();
+
     function dialog_box() {
         const url = $('form[data-url]').data('url');
         jQuery.get(url)
@@ -28,8 +44,5 @@ jQuery(document).ready(function () {
                     return false;
                 });
             });
-    }
-    if (!input_location.val()) {
-        dialog_box();
     }
 });
