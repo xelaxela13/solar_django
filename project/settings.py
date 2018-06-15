@@ -148,7 +148,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-SHOW_LANG_SWITCH = False
+SHOW_LANG_SWITCH = True
 
 # Email send
 # https://docs.djangoproject.com/en/2.0/topics/email/
