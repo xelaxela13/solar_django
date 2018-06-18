@@ -60,7 +60,7 @@
 }
 
 .circle:hover {
-  border-width: 15px;
+  border-width: 14px;
   border-color: @graylight;
   transition: all .2s ease-in;
 }
@@ -71,8 +71,7 @@
 }
 
 .circle:not(:hover) {
-  transition: all .3s ease-out;
-
+  transition: all .1s ease-out;
 }
 
 .img_lief {
@@ -80,6 +79,10 @@
   background: white;
   padding: 10px;
   border-radius: 50% 0;
+}
+
+.electric {
+  position: relative;
 }
 
 .electric::before {
@@ -100,9 +103,11 @@
 .city img {
   height: 35vh;
 }
-ul.pictures{
+
+ul.pictures {
   padding: 0;
 }
+
 ul.pictures li {
   list-style: none;
   display: inline-flex;
@@ -113,11 +118,78 @@ ul.pictures li {
   align-items: center;
   margin: -4px;
 }
-ul.pictures li:hover img{
+
+ul.pictures li:hover img {
   transform: scale(.8);
   transition: all .2s ease-in;
 }
-ul.pictures li:not(:hover) img{
+
+ul.pictures li:not(:hover) img {
   transform: scale(1);
   transition: all .1s ease-out;
+}
+
+.closest_text_block_show, .closest_text_block_hide {
+  position: relative;
+}
+
+.closest_text_block_show::after, .closest_text_block_hide:after {
+  content: '';
+  height: 0;
+  width: 100%;
+  background-color: @graylight;
+  position: absolute;
+  left: 0;
+  z-index: -1;
+}
+
+.closest_text_block_show::after {
+  bottom: 0;
+  animation: bg_up .2s ease-in alternate;
+  height: 100%;
+}
+
+.closest_text_block_hide:after {
+  top: 0;
+  animation: bg_down .2s ease-out alternate;
+}
+
+@keyframes bg_up {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+@keyframes bg_down {
+  from {
+    height: 100%;
+  }
+  to {
+    height: 0;
+  }
+}
+
+.row .col-lg-4.border_bottom_dashed {
+  opacity: 0;
+  transition: all 1s ease-in;
+}
+
+.solar_panel_bg, .solar_panel_text {
+  min-height: 500px;
+  opacity: 0;
+}
+
+.solar_panel_bg {
+  background: url("images/home/index/panel3.jpg") no-repeat right center;
+  background-size: 100%;
+}
+
+.solar_panel_text{
+  flex-flow: column;
+}
+.solar_panel_text h2 {
+  padding: 10px;
 }

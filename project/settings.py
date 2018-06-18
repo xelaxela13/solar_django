@@ -128,7 +128,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'ru_Ru'
+LANGUAGE_CODE = 'ru'
 
 from django.utils.translation import gettext_lazy as _
 
@@ -148,7 +148,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-SHOW_LANG_SWITCH = True
+SHOW_LANG_SWITCH = False
 
 # Email send
 # https://docs.djangoproject.com/en/2.0/topics/email/

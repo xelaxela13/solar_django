@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-25 10:16+0300\n"
-"PO-Revision-Date: 2018-05-25 10:22+0202\n"
+"POT-Creation-Date: 2018-06-17 15:41+0300\n"
+"PO-Revision-Date: 2018-06-17 15:42+0202\n"
 "Last-Translator: b'  <xelaxela13@gmail.com>'\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -47,40 +47,40 @@ msgstr "пользователь"
 msgid "users"
 msgstr "пользователи"
 
-#: accounts/views.py:56 templates/accounts/registration/login.html:18
+#: accounts/views.py:39 templates/accounts/registration/login.html:18
 #: templates/header.html:25
 msgid "Log in"
 msgstr "Войти"
 
-#: accounts/views.py:64
+#: accounts/views.py:46
 msgid "Registration was successful, please log in"
 msgstr "Регистрация прошла успешно, войдите под своим именем"
 
-#: accounts/views.py:65 templates/accounts/registration/login.html:10
+#: accounts/views.py:47 templates/accounts/registration/login.html:10
 #: templates/accounts/registration/signup.html:22 templates/header.html:28
 msgid "Sign up"
 msgstr "Зарегистрироваться"
 
-#: accounts/views.py:81 accounts/views.py:82
+#: accounts/views.py:56 accounts/views.py:57
 #: templates/accounts/panel/panel.html:10
 msgid "Control panel"
 msgstr "Панель управления"
 
-#: accounts/views.py:86 templates/accounts/panel/panel.html:8
+#: accounts/views.py:61 templates/accounts/panel/panel.html:8
 msgid "Welcome"
 msgstr "Добро пожаловать"
 
-#: accounts/views.py:91
+#: accounts/views.py:66
 #, fuzzy
 #| msgid "My account"
 msgid "Update account"
 msgstr "Обновить личные данные"
 
-#: accounts/views.py:96
+#: accounts/views.py:71
 msgid "Updated success!"
 msgstr "Обновленно успешно!"
 
-#: accounts/views.py:108 templates/accounts/panel/panel.html:16
+#: accounts/views.py:83 templates/accounts/panel/panel.html:16
 msgid "A list of users"
 msgstr "Список пользователей"
 
@@ -93,7 +93,6 @@ msgid "Start upload"
 msgstr "Начать загрузку"
 
 #: fileupload/templates/fileupload/picture_form.html:37
-#| msgid "Cancel"
 msgid "Cancel upload"
 msgstr "Отменить загрузку"
 
@@ -101,15 +100,19 @@ msgstr "Отменить загрузку"
 msgid "Delete"
 msgstr "Удалить"
 
-#: home/views.py:7
-msgid "IceBERG solar systems company"
+#: fileupload/views.py:15 templates/accounts/panel/panel.html:25
+msgid "Upload images"
+msgstr "Загрузка изображений"
+
+#: home/views.py:8
+msgid "IceBERG"
 msgstr ""
 
-#: project/settings.py:130
+#: project/settings.py:136
 msgid "Russian"
 msgstr "Русский"
 
-#: project/settings.py:131
+#: project/settings.py:137
 msgid "English"
 msgstr "Английский"
 
@@ -138,10 +141,6 @@ msgstr "Росетта"
 #: templates/accounts/panel/panel.html:22
 msgid "Admin panel"
 msgstr "Панель администрирования"
-
-#: templates/accounts/panel/panel.html:25
-msgid "Upload images"
-msgstr "Загрузка изображений"
 
 #: templates/accounts/panel/update.html:9
 msgid "Update"
@@ -193,19 +192,19 @@ msgstr "Личный кабинет"
 msgid "Log out"
 msgstr "Выйти"
 
-#: templates/home/index.html:13
+#: templates/home/index.html:14
 msgid "Sunshine energy is it simple"
 msgstr "Солнечная энергия - это просто"
 
-#: templates/home/index.html:14
+#: templates/home/index.html:15
 msgid "Easier than ever"
 msgstr "Проще чем когда либо"
 
-#: templates/home/index.html:20
+#: templates/home/index.html:21
 msgid "Complete energy independence today"
 msgstr "Полная энергонезависимость уже сегодня"
 
-#: templates/home/index.html:22
+#: templates/home/index.html:23
 msgid ""
 "Imagine that you are completely independent of the power supplier, moreover,"
 " you do not pay them, but they pay you!"
@@ -213,11 +212,11 @@ msgstr ""
 "Представьте, что вы полностью независимы от энергосети, мало того, не вы "
 "платите им, а они вам!"
 
-#: templates/home/index.html:48
+#: templates/home/index.html:49
 msgid "Full state support"
 msgstr "Полная поддержка государства"
 
-#: templates/home/index.html:50
+#: templates/home/index.html:51
 msgid ""
 "A simple procedure for issuing documents, connecting a 'green' tariff in the"
 " shortest time"
@@ -225,22 +224,22 @@ msgstr ""
 "Простая процедура оформления документов, подключение \"зеленого\" тарифа в "
 "кратчайшие сроки"
 
-#: templates/home/index.html:58
+#: templates/home/index.html:59
 msgid "Development of project documentation"
 msgstr "Разработка проектной документации"
 
-#: templates/home/index.html:60
+#: templates/home/index.html:61
 msgid ""
 "You do not need to \"run\" through the authorities, we take care of all the "
 "troubles."
 msgstr ""
 "Вам не потребуется \"бегать\" по инстанциям, все хлопоты мы берем на себя. "
 
-#: templates/home/index.html:85
+#: templates/home/index.html:86
 msgid "Payback period of the project for 3.3 years"
 msgstr "Окупаемость проекта в течении 3.3 лет"
 
-#: templates/home/index.html:87
+#: templates/home/index.html:88
 msgid ""
 "The payback period decreases every year, investing in solar energy is "
 "profitable."
@@ -248,19 +247,19 @@ msgstr ""
 "Срок окупаемости уменьшается с каждым годом, инвестирование в солнечную "
 "энергетику это выгодно."
 
-#: templates/home/index.html:91
+#: templates/home/index.html:92
 msgid "The calculation was made for a 30 kW station as of early 2018."
 msgstr "Расчет был сделан на 30 кВт станцию по состоянию на начало 2018 г."
 
-#: templates/home/index.html:92
+#: templates/home/index.html:93
 msgid "Download solar plant payback calculation"
 msgstr "Скачать график окупаемости солнечной станции"
 
-#: templates/home/index.html:98
+#: templates/home/index.html:99
 msgid "Full control over system performance"
 msgstr "Полный контроль над производительностью системы"
 
-#: templates/home/index.html:100
+#: templates/home/index.html:101
 msgid ""
 "Monitoring systems and automation allow monitoring of all processes in the "
 "system. Control your profits in real time."
@@ -268,17 +267,20 @@ msgstr ""
 "Системы контроля и автоматика позволяют следить за всеми процессами в "
 "системе. Контролируйте свою прибыль в реальном времени."
 
-#: templates/home/index.html:121
+#: templates/home/index.html:122
 msgid "For the private clients"
 msgstr "Для частных клиентов"
 
-#: templates/home/index.html:152
+#: templates/home/index.html:153
 msgid "For legal entities"
 msgstr "Для юридических лиц"
 
-#: templates/upload/upload_form.html:8
-msgid "Upload"
-msgstr "Загрузить"
+#: templates/home/index.html:163
+msgid "Only certifications equipments and brands with world name"
+msgstr "Только сертифицированное оборудование и бренды с мировым именем"
+
+#~ msgid "Upload"
+#~ msgstr "Загрузить"
 
 #~ msgid "Settings"
 #~ msgstr "Настройки"

@@ -39,4 +39,37 @@ jQuery(document).ready(function () {
         }, 4000);
     }
 
+    // animate vertical line and circles
+    const circle = $(".circle"),
+        vertical_line = $('.vertical_line');
+    circle.on('mouseover', function (e) {
+        vertical_line.addClass('bold');
+        var closest_text_block = $(this).closest('.row').find('.border_bottom_dashed');
+        closest_text_block.addClass('closest_text_block_show');
+        closest_text_block.removeClass('closest_text_block_hide')
+    });
+    circle.on('mouseout', function (e) {
+        vertical_line.removeClass('bold');
+        var closest_text_block = $(this).closest('.row').find('.border_bottom_dashed');
+        closest_text_block.removeClass('closest_text_block_show');
+        closest_text_block.addClass('closest_text_block_hide')
+    });
+
+    // if element view on screen
+    var description = $('.row .col-lg-4.border_bottom_dashed'),
+        solar_panel_bg = $('.solar_panel_bg'),
+        solar_panel_text = $('.solar_panel_text');
+    $(window).scroll(function () {
+        description.each(function () {
+            if (Utils.isElementInView($(this))) {
+                description.css('opacity', '1');
+                return false;
+            }
+        });
+        if (Utils.isElementInView(solar_panel_bg, true) || Utils.isElementInView(solar_panel_text, true)){
+            solar_panel_bg.css('opacity', '1');
+            solar_panel_text.css('opacity', '1');
+        }
+    });
+
 });
