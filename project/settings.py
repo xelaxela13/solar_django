@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'rosetta',
     'meta',
     'django_celery_results',
+    'django_celery_beat',
     # local apps
     'project',
     'accounts',
@@ -218,10 +219,18 @@ environ['GOOGLE_APPLICATION_CREDENTIALS'] = rel('baseprojectdjango-208a1c3136b5.
 # REDIS related settings
 CELERY_REDIS_HOST = 'localhost'
 CELERY_REDIS_PORT = '6379'
-BROKER_URL = 'redis://' + CELERY_REDIS_HOST + ':' + CELERY_REDIS_PORT + '/0'
+CELERY_BROKER_URL = 'redis://' + CELERY_REDIS_HOST + ':' + CELERY_REDIS_PORT + '/0'
 BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
-CELERY_RESULT_BACKEND = BROKER_URL
-CELERY_TASK_ALWAYS_EAGER = True
+CELERY_RESULT_BACKEND = CELERY_BROKER_URL
+CELERY_TASK_ALWAYS_EAGER = False
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = TIME_ZONE
+
+def log_level():
+    return 'DEBUG' if DEBUG else 'INFO'
+
 
 LOGGING = {
     'version': 1,
@@ -242,7 +251,7 @@ LOGGING = {
     },
     'handlers': {
         'file_log': {
-            'level': 'DEBUG',
+            'level': log_level(),
             'class': 'logging.FileHandler',
             'mode': 'w' if DEBUG else 'a',
             'filename': rel('log', '{}_django.log'.format(timezone.now().strftime('%Y%m%d'))),
@@ -255,13 +264,13 @@ LOGGING = {
             'formatter': 'verbose',
         },
         'request_file_log': {
-            'level': 'DEBUG',
+            'level': log_level(),
             'class': 'logging.FileHandler',
             'filename': rel('log', '{}_request.log'.format(timezone.now().strftime('%Y%m%d'))),
             'formatter': 'verbose',
         },
         'celery_file_log': {
-            'level': 'DEBUG',
+            'level': log_level(),
             'class': 'logging.FileHandler',
             'mode': 'w' if DEBUG else 'a',
             'filename': rel('log', '{}_celery.log'.format(timezone.now().strftime('%Y%m%d'))),
@@ -274,7 +283,7 @@ LOGGING = {
             'include_html': True,
         },
         'console': {
-            'level': 'INFO',
+            'level': log_level(),
             'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler',
             'formatter': 'simple'
@@ -284,7 +293,7 @@ LOGGING = {
         'django': {
             'handlers': ['file_log', 'console'],
             'propagate': True,
-            'level': 'DEBUG',
+            'level': log_level(),
         },
         'django.request': {
             'handler': ['mail_admins', 'request_file_log'],
@@ -298,9 +307,9 @@ LOGGING = {
             'propagate': False,
         },
         'celery': {
-            'handlers': ['celery_file_log'],
-            'level': 'DEBUG',
-            'propagate': False
+            'handlers': ['celery_file_log', 'console'],
+            'level': log_level(),
+            'propagate': True
         },
     }
 }

@@ -28,8 +28,12 @@ def choice_location_manual(request):
 
 
 def choice_location_api(request):
+    ip_address = [val for key, val in request.META.items() if key in ['HTTP_X_FORWARDED_FOR',
+                                                                      'HTTP_X_REAL_IP',
+                                                                      'REMOTE_ADDR']
+                  ]
     city = get_location.apply_async(
-        kwargs={'language_code': request.LANGUAGE_CODE, 'request_meta': request.META},
+        kwargs={'language_code': request.LANGUAGE_CODE, 'ip_address': ip_address[0]},
     )
     return JsonResponse(data={'city': city.result})
 
