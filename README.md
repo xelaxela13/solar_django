@@ -31,7 +31,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 To be create default .env file run:
 
-set_env_vars.sh
+python set_env_vars.py
 
 Heroku deploy
 -------------

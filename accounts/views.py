@@ -76,7 +76,7 @@ class AccountsUpdate(SuccessMessageMixin, MyMetadataMixin, UpdateView):
 
     def get_initial(self):
         initial = super().get_initial()
-        city = get_location(self.request)
+        city = choice_location_api(self.request)
         if city:
             initial['location'] = city
         return initial

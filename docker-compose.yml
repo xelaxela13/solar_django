@@ -1,30 +1,59 @@
 version: '3'
 
+# хранилища
+volumes:
+    pgdata:
+        driver: local
 services:
-  db:
-    image: postgres
-  web:
-    build: .
-    image: solar_django_project
-    command: gunicorn -c gunicorn_conf.py project.wsgi
-    volumes:
-      - .:/code
-    ports:
-      - "8000:8000"
-    depends_on:
-      - db
-      - migration
-      - collectstatic
-  migration:
-    build: .
-    image: solar_django_project
-    command: python3 manage.py migrate --noinput
-    volumes:
-      - .:/code
-    depends_on:
-      - db
-  collectstatic:
-    image: solar_django_project
-    command: python3 manage.py collectstatic --noinput
-    volumes:
-      - .:/code
+    nginx:
+        container_name: nginx
+# при падении будет стараться подняться
+        restart: always
+# только свежий nginx
+        image: nginx:latest
+# слушает порт 8080
+        expose:
+          - 8080
+# мапаем порт 80 на его 8080. Тогда сайт будет доступен по адресу localhost. Убедись, что порт у тебя не занят.
+        ports:
+          - "80:8080"
+# монтируем только те директории, в которых лежит статика, т.к. nginx с динамикой не будет работать. Также директорию с логами и файл настройки, который мы подготовили.
+        volumes:
+            - ./static:/srv/www/solar_django/static
+            - ./media:/srv/www/solar_django/media
+            - ./log:/srv/www/solar_django/log
+            - ./docker/nginx:/etc/nginx/conf.d
+# и nginx зависит от контейнера python. Т.е. python должен быть запущен первым
+        depends_on:
+            - python
+    python:
+        container_name: python
+        restart: always
+# указываем откуда собирать образ
+        build:
+            context: .
+            dockerfile: docker/python/Dockerfile
+# монтируем директорию проекта
+        volumes:
+            - .:/srv/www/solar_django
+        expose:
+          - 8000
+        ports:
+            - 8000:8000
+# запускаем gunicorn
+        command: "gunicorn -c gunicorn.py project.wsgi"
+        depends_on:
+          - postgres
+    postgres:
+        container_name: db
+# Ниже даже расписывать не хочу, насколько все просто: логин, пароль, БД, порты и т.д.
+        image: postgres:9.3.22
+        ports:
+            - 5432:5432
+        environment:
+#            POSTGRES_USER: username
+#            POSTGRES_PASSWORD: postgresql_password
+#            POSTGRES_DB: database_name
+            PGDATA: /var/lib/postgresql/data
+        volumes:
+            - pgdata:/var/lib/postgresql/data
