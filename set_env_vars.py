@@ -9,7 +9,7 @@ def run():
     config.optionxform = lambda x: x.upper()
     while True:
         try:
-            config['SETTINGS']= {
+            config['SETTINGS'] = {
                 'SECRET_KEY': random_string(),
                 'ALLOWED_HOSTS': '*',
                 'DEBUG': True,
@@ -18,7 +18,7 @@ def run():
                 'GMAIL_USER': ''
 
             }
-            config['DB']= {
+            config['DB'] = {
                 'name': 'postgres',
                 'USER': 'postgres',
                 # 'PASSWORD': 'postgres',

@@ -217,7 +217,7 @@ environ['GOOGLE_APPLICATION_CREDENTIALS'] = rel('baseprojectdjango-208a1c3136b5.
 #: from unwanted access (see userguide/security.html)
 
 # REDIS related settings
-CELERY_REDIS_HOST = 'localhost'
+CELERY_REDIS_HOST = 'redis'
 CELERY_REDIS_PORT = '6379'
 CELERY_BROKER_URL = 'redis://' + CELERY_REDIS_HOST + ':' + CELERY_REDIS_PORT + '/0'
 BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}

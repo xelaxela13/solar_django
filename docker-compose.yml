@@ -2,58 +2,101 @@ version: '3'
 
 # хранилища
 volumes:
-    pgdata:
-        driver: local
+  pgdata:
+    driver: local
 services:
-    nginx:
-        container_name: nginx
-# при падении будет стараться подняться
-        restart: always
-# только свежий nginx
-        image: nginx:latest
-# слушает порт 8080
-        expose:
-          - 8080
-# мапаем порт 80 на его 8080. Тогда сайт будет доступен по адресу localhost. Убедись, что порт у тебя не занят.
-        ports:
-          - "80:8080"
-# монтируем только те директории, в которых лежит статика, т.к. nginx с динамикой не будет работать. Также директорию с логами и файл настройки, который мы подготовили.
-        volumes:
-            - ./static:/srv/www/solar_django/static
-            - ./media:/srv/www/solar_django/media
-            - ./log:/srv/www/solar_django/log
-            - ./docker/nginx:/etc/nginx/conf.d
-# и nginx зависит от контейнера python. Т.е. python должен быть запущен первым
-        depends_on:
-            - python
-    python:
-        container_name: python
-        restart: always
-# указываем откуда собирать образ
-        build:
-            context: .
-            dockerfile: docker/python/Dockerfile
-# монтируем директорию проекта
-        volumes:
-            - .:/srv/www/solar_django
-        expose:
-          - 8000
-        ports:
-            - 8000:8000
-# запускаем gunicorn
-        command: "gunicorn -c gunicorn.py project.wsgi"
-        depends_on:
-          - postgres
-    postgres:
-        container_name: db
-# Ниже даже расписывать не хочу, насколько все просто: логин, пароль, БД, порты и т.д.
-        image: postgres:9.3.22
-        ports:
-            - 5432:5432
-        environment:
-#            POSTGRES_USER: username
-#            POSTGRES_PASSWORD: postgresql_password
-#            POSTGRES_DB: database_name
-            PGDATA: /var/lib/postgresql/data
-        volumes:
-            - pgdata:/var/lib/postgresql/data
+  redis:
+    image: redis:latest
+    container_name: redis
+    restart: always
+  nginx:
+    container_name: nginx
+    # при падении будет стараться подняться
+    restart: always
+    # только свежий nginx
+    image: nginx:latest
+    # слушает порт 8080
+    expose:
+    - 8080
+    # мапаем порт 80 на его 8080. Тогда сайт будет доступен по адресу localhost. Убедись, что порт у тебя не занят.
+    ports:
+    - "80:8080"
+    # монтируем только те директории, в которых лежит статика, т.к. nginx с динамикой не будет работать. Также директорию с логами и файл настройки, который мы подготовили.
+    volumes:
+    - ./log:/srv/www/solar_django/log
+    - ./docker/nginx:/etc/nginx/conf.d
+    depends_on:
+    - web
+  web:
+    container_name: web
+    restart: always
+    # указываем откуда собирать образ
+    build:
+      context: .
+      dockerfile: docker/python/Dockerfile
+    # монтируем директорию проекта
+    volumes:
+    - .:/srv/www/solar_django
+    expose:
+    - 8000
+    ports:
+    - 8000:8000
+    - 8001:8001
+    # запускаем gunicorn
+    command: "gunicorn -c gunicorn.py project.wsgi"
+    depends_on:
+    - postgres
+    - redis
+    - memcached
+  postgres:
+    container_name: db
+    image: postgres:9.3.22
+    ports:
+    - 5432:5432
+    environment:
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+    - pgdata:/var/lib/postgresql/data
+  celery:
+    build:
+      context: .
+      dockerfile: docker/python/Dockerfile
+    container_name: celery
+    command: celery -A project worker -l info --pidfile=$PROJECT_ROOT/run/celery.pid
+    restart: always
+    volumes:
+    - .:/srv/www/solar_django
+    depends_on:
+    - postgres
+    - redis
+  celery-beat:
+    build:
+      context: .
+      dockerfile: docker/python/Dockerfile
+    container_name: celerybeat
+    command: celery -A project beat -l info --schedule=$PROJECT_ROOT/run/celerybeat-schedule --pidfile=$PROJECT_ROOT/run/celerybeat.pid
+    restart: always
+    volumes:
+    - .:/srv/www/solar_django
+    depends_on:
+    - postgres
+    - redis
+  memcached:
+    image: memcached:latest
+    container_name: memcached
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "2"
+#  rabbitmq:
+#    image: rabbitmq:3.5.4-management
+#    env_file: .env
+#    container_name: rabbitmq
+#    restart: always
+#    logging:
+#      driver: "json-file"
+#      options:
+#        max-size: "10m"
+#        max-file: "2"
