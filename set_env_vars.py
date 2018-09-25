@@ -15,7 +15,9 @@ def run():
                 'DEBUG': True,
                 'IPSTACK_ACCESS_KEY': '0e3e331a2e84afc272c53c97982cc67c',
                 'GMAIL_PASSWORD': '',
-                'GMAIL_USER': ''
+                'GMAIL_USER': '',
+                'PROJECT_ROOT': '',
+                'MEMCACHED_HOST': 'memcached'
 
             }
             config['DB'] = {

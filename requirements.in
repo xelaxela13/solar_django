@@ -13,4 +13,3 @@ celery
 celery[redis]
 django-celery-results
 django-celery-beat
-gevent
