@@ -12,11 +12,11 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 from os import path, environ
 from decouple import config
-
-# Build paths inside the project like this: path.join(BASE_DIR, ...)
 from django.urls import reverse_lazy
 from django.utils import timezone
+from project.utils import get_db_settings
 
+# Build paths inside the project like this: path.join(BASE_DIR, ...)
 BASE_DIR = path.dirname(path.dirname(path.abspath(__file__)))
 
 
@@ -102,8 +102,6 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
     }
 }
-from project.utils import get_db_settings
-
 get_db_settings(DATABASES, rel('.env'))
 
 # Password validation
@@ -161,12 +159,13 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 # EMAIL_USE_SSL = True
 
-# CACHES = {
-#     'default': {
-#         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-#         'LOCATION': 'memcached',
-#     }
-# }
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': config('MEMCACHED_HOST', default='127.0.0.1'),
+        'TIMEOUT': 60 * 60,  # 1h,
+    }
+}
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 STATIC_URL = '/static/'

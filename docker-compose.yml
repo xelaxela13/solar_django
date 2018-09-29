@@ -23,7 +23,7 @@ services:
     - "80:8080"
     # монтируем только те директории, в которых лежит статика, т.к. nginx с динамикой не будет работать. Также директорию с логами и файл настройки, который мы подготовили.
     volumes:
-    - ./log:/srv/www/solar_django/log
+    - ./log:/etc/nginx/log
     - ./docker/nginx:/etc/nginx/conf.d
     depends_on:
     - web

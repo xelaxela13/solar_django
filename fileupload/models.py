@@ -62,7 +62,6 @@ class Picture(models.Model):
     def __str__(self):
         return self.file.name
 
-    @models.permalink
     def get_absolute_url(self):
         return ('upload-new',)
 

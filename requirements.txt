@@ -16,7 +16,7 @@ django-celery-results==1.0.1
 django-heroku==0.3.1
 django-meta==1.4.1
 django-rosetta==0.8.1
-django==2.0.4
+django==2.1
 gunicorn==19.8.1
 idna==2.6                 # via requests
 kombu==4.2.1              # via celery
@@ -25,10 +25,11 @@ pillow==5.1.0
 polib==1.1.0              # via django-rosetta
 psycopg2==2.7.4
 python-decouple==3.1
+python-memcached==1.59
 pytz==2018.4              # via celery, django
 redis==2.10.6             # via celery
 requests==2.18.4
-six==1.11.0               # via django-rosetta, microsofttranslator
+six==1.11.0               # via django-rosetta, microsofttranslator, python-memcached
 urllib3==1.22             # via requests
 vine==1.1.4               # via amqp
 whitenoise==3.3.1
