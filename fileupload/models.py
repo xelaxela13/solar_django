@@ -1,6 +1,6 @@
 # encoding: utf-8
 import os
-from project.settings import THUMBNAIL_SIZE, AUTH_USER_MODEL
+from project.settings import THUMBNAIL_SIZE, AUTH_USER_MODEL, DELETE_MEDIA_FILES
 from PIL import Image
 from django.db import models
 from django.utils import timezone
@@ -63,10 +63,10 @@ class Picture(models.Model):
         return self.file.name
 
     def get_absolute_url(self):
-        return ('upload-new',)
+        return ('upload-new', )
 
     def delete(self, *args, **kwargs):
         """delete -- Remove to leave file."""
-        self.file.delete(False)
-        self.thumbnail.delete(False)
+        self.file.delete(DELETE_MEDIA_FILES)
+        self.thumbnail.delete(DELETE_MEDIA_FILES)
         super(Picture, self).delete(*args, **kwargs)

@@ -191,6 +191,7 @@ SITE_LOGO_SECOND = path.join(STATIC_URL, 'images/iceberg_logo.svg')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = rel('static_content', 'media')
 THUMBNAIL_SIZE = [250, 250]
+DELETE_MEDIA_FILES = True  # delete files after deleting model entity
 
 #  https://ipstack.com/
 #  free geo api
