@@ -162,14 +162,14 @@ EMAIL_USE_TLS = True
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': config('MEMCACHED_HOST', default='127.0.0.1'),
+        'LOCATION': config('MEMCACHED_HOST', default='127.0.0.1')+':'+config('MEMCACHED_PORT', default='11211'),
         'TIMEOUT': 60 * 60,  # 1h,
     }
 }
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 STATIC_URL = '/static/'
-STATIC_ROOT = rel('asset')
+STATIC_ROOT = rel('static_content', 'asset')
 STATICFILES_DIRS = [
     rel('asset_dev')
 ]
@@ -189,7 +189,7 @@ SITE_LOGO_SECOND = path.join(STATIC_URL, 'images/iceberg_logo.svg')
 # Media files
 # https://docs.djangoproject.com/en/2.0/howto/static-files/#serving-files-uploaded-by-a-user-during-development
 MEDIA_URL = '/media/'
-MEDIA_ROOT = rel('media')
+MEDIA_ROOT = rel('static_content', 'media')
 THUMBNAIL_SIZE = [250, 250]
 
 #  https://ipstack.com/

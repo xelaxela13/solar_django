@@ -1,29 +1,27 @@
-import configparser
 import random
 import string
 import os.path
 
 
 def run():
-    config = configparser.ConfigParser()
-    config.optionxform = lambda x: x.upper()
+    config = {}
     while True:
         try:
             config['SETTINGS'] = {
+                'PROJECT_ROOT': 'srv/www/solar_django',
                 'SECRET_KEY': random_string(),
                 'ALLOWED_HOSTS': '*',
                 'DEBUG': True,
                 'IPSTACK_ACCESS_KEY': '0e3e331a2e84afc272c53c97982cc67c',
                 'GMAIL_PASSWORD': '',
                 'GMAIL_USER': '',
-                'PROJECT_ROOT': '',
-                'MEMCACHED_HOST': 'memcached'
+                'MEMCACHED_HOST': 'memcached',
+                'MEMCACHED_PORT': '11211'
 
             }
             config['DB'] = {
                 'name': 'postgres',
                 'USER': 'postgres',
-                # 'PASSWORD': 'postgres',
                 'HOST': 'db',
                 'PORT': '5432'
             }
@@ -35,11 +33,20 @@ def run():
         print('File {} already exist, cannot rewrite it. '.format(file))
         return
     try:
+        import pdb
         with open(file, 'w') as f:
-            config.write(f)
+
+            for title, conf in config.items():
+                # pdb.set_trace()
+                f.writelines('['+str(title).upper()+']\n')
+                for key, value in conf.items():
+                    f.writelines('\t'+str(key).upper()+'='+str(value)+'\n')
+            # f.write(json.dumps(config))
             print('Config file was created success')
             return
-    except IOError as err:
+    except Exception as err:
+        if os.path.isfile(file):
+            os.remove(file)
         print(err)
         return
 

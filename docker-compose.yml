@@ -69,12 +69,12 @@ services:
     depends_on:
     - postgres
     - redis
-  celery-beat:
+  celerybeat:
     build:
       context: .
       dockerfile: docker/web/Dockerfile
     container_name: celerybeat
-    command: celery -A project beat -l info --schedule=$PROJECT_ROOT/run/celerybeat-schedule --pidfile=$PROJECT_ROOT/run/celerybeat.pid
+    command: celery -A project beat -l info --schedule=/run/celerybeat-schedule --pidfile=/run/celerybeat.pid
     restart: always
     volumes:
     - .:/srv/www/solar_django

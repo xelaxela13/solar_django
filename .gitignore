@@ -111,3 +111,5 @@ virtenv/
 
 #node.js
 node_modules/
+
+static_content/
