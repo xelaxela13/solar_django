@@ -62,7 +62,7 @@ services:
       context: .
       dockerfile: docker/web/Dockerfile
     container_name: celery
-    command: celery -A project worker -l info --pidfile=$PROJECT_ROOT/run/celery.pid
+    command: celery -A project worker -l info --pidfile=/run/celery.pid
     restart: always
     volumes:
     - .:/srv/www/solar_django
@@ -90,13 +90,3 @@ services:
       options:
         max-size: "10m"
         max-file: "2"
-#  rabbitmq:
-#    image: rabbitmq:3.5.4-management
-#    env_file: .env
-#    container_name: rabbitmq
-#    restart: always
-#    logging:
-#      driver: "json-file"
-#      options:
-#        max-size: "10m"
-#        max-file: "2"

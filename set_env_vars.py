@@ -8,7 +8,6 @@ def run():
     while True:
         try:
             config['SETTINGS'] = {
-                'PROJECT_ROOT': 'srv/www/solar_django',
                 'SECRET_KEY': random_string(),
                 'ALLOWED_HOSTS': '*',
                 'DEBUG': True,

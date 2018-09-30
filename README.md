@@ -110,3 +110,10 @@ https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postg
         include /home/xela/conf/web/nginx.iceberg.osf.com.ua.conf*;
     }
 ```
+Docker
+------
+docker-compose build
+
+docker-compose up -d
+
+docker exec -it web python manage.py runserver 0:8080
