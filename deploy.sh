@@ -93,7 +93,7 @@ fi
 #    fi
 #fi
 
- Update source code from repository
+# Update source code from repository
 if [ "${PULL}" = true ]; then
     git pull origin $BRANCH
 fi

@@ -113,3 +113,4 @@ virtenv/
 node_modules/
 
 static_content/
+backups/
