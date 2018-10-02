@@ -55,7 +55,7 @@ Heroku deploy
 
 Start wsgi using gunicorn
 -------------------------
-sudo gunicorn -c gunicorn_conf.py project.wsgi
+sudo gunicorn -c gunicorn.py project.wsgi
 
 Gmail settings
 --------------
@@ -112,6 +112,10 @@ https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postg
 ```
 Docker
 ------
+deploy.sh
+
+OR
+
 docker-compose build
 
 docker-compose up -d
