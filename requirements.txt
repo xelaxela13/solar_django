@@ -21,7 +21,7 @@ gunicorn==19.8.1
 idna==2.6                 # via requests
 kombu==4.2.1              # via celery
 microsofttranslator==0.8  # via django-rosetta
-pillow==5.1.0
+pillow==6.2.0
 polib==1.1.0              # via django-rosetta
 psycopg2==2.7.4
 python-decouple==3.1
